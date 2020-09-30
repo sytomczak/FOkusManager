@@ -1,4 +1,4 @@
-package pl.sytomczak.fokusmanager.dbUtils;
+package pl.sytomczak.fokusmanager.dbutils;
 
 import java.io.File;
 import java.sql.*;
