@@ -23,9 +23,12 @@ public class NotesView extends JFrame {
         CalenderView calenderView = new CalenderView();
     }
 //    public static void main(String[] args) {
-//        NotesView notesView = new NotesView();
-//        notesView.setVisible(true);
-//    //    Connection connection = DBConnection.getConnection();
+////        NotesView notesView = new NotesView();
+////        notesView.setVisible(true);
 //
-//    }
+//        CalenderView calenderView = new CalenderView();
+//
+        //    Connection connection = DBConnection.getConnection();
+
+
 }
