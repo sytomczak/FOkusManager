@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="JPlanner">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/JPlanner.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
