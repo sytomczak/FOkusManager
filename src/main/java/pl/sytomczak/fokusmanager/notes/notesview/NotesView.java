@@ -1,10 +1,8 @@
 package pl.sytomczak.fokusmanager.notes.notesview;
 
-import pl.sytomczak.fokusmanager.calender.CalenderView;
-import pl.sytomczak.fokusmanager.dbutils.DBConnection;
+import pl.sytomczak.fokusmanager.calender.jdatapickercalender.CalenderView;
 
 import javax.swing.*;
-import java.sql.Connection;
 
 public class NotesView extends JFrame {
     private JTextArea notesArea;

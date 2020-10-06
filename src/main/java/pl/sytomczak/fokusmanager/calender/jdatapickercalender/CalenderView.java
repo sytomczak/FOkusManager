@@ -1,4 +1,4 @@
-package pl.sytomczak.fokusmanager.calender;
+package pl.sytomczak.fokusmanager.calender.jdatapickercalender;
 
 import org.jdatepicker.impl.JDatePanelImpl;
 import org.jdatepicker.impl.JDatePickerImpl;
@@ -27,19 +27,20 @@ public class CalenderView  {
                     ex.printStackTrace();
                 }
 
-                JFrame frame = new JFrame("Testing");
+                JFrame frame = new JFrame("Calender");
                 frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                frame.add(new TestPane());
+                frame.add(new CalenderPane());
                 frame.pack();
                 frame.setLocationRelativeTo(null);
+                frame.setSize(300, 300);
                 frame.setVisible(true);
             }
         });
     }
 
-    public class TestPane extends JPanel {
+    public class CalenderPane extends JPanel {
 
-        public TestPane() {
+        public CalenderPane() {
             UtilDateModel model = new UtilDateModel();
             Properties p = new Properties();
             p.put("text.today", "Today");
@@ -49,6 +50,8 @@ public class CalenderView  {
             JDatePickerImpl datePicker = new JDatePickerImpl(datePanel, new DateLabelFormatter());
             setLayout(new GridBagLayout());
             add(datePicker);
+
+
         }
 
     }
