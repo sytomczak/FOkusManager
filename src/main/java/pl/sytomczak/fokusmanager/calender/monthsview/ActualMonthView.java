@@ -1,4 +1,4 @@
-package pl.sytomczak.fokusmanager.calender;
+package pl.sytomczak.fokusmanager.calender.monthsview;
 
 import com.mindfusion.common.DateTime;
 import com.mindfusion.scheduling.CalendarView;
@@ -10,11 +10,11 @@ import javax.swing.border.EmptyBorder;
 import java.awt.*;
 
 
-public class CalenderMainView extends JFrame {
+public class ActualMonthView extends JFrame {
 
     AwtCalendar calendar;
 
-    protected CalenderMainView() {
+    protected ActualMonthView() {
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -56,9 +56,9 @@ public class CalenderMainView extends JFrame {
     public static void main(String[] args) {
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
-                CalenderMainView window = null;
+                ActualMonthView window = null;
                 try {
-                    window = new CalenderMainView();
+                    window = new ActualMonthView();
                     window.setVisible(true);
                 } catch (Exception exp) {
                 }

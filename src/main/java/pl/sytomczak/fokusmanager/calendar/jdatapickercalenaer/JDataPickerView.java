@@ -1,4 +1,4 @@
-package pl.sytomczak.fokusmanager.calender.jdatapickercalender;
+package pl.sytomczak.fokusmanager.calendar.jdatapickercalenaer;
 
 import org.jdatepicker.impl.JDatePanelImpl;
 import org.jdatepicker.impl.JDatePickerImpl;
@@ -11,13 +11,13 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Properties;
 
-public class CalenderView  {
+public class JDataPickerView {
 
     public static void main(String[] args) {
-        new CalenderView();
+        new JDataPickerView();
     }
 
-    public CalenderView() {
+    public JDataPickerView() {
         EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
