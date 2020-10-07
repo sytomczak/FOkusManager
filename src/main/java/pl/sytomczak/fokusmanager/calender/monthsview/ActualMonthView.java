@@ -12,13 +12,13 @@ import java.awt.*;
 
 public class ActualMonthView extends JFrame {
 
+
     AwtCalendar calendar;
 
-    protected ActualMonthView() {
+    public ActualMonthView() {
+
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-        setTitle("Calender");
         setMinimumSize(new Dimension(800, 600));
 
         BorderLayout layout = new BorderLayout();
@@ -32,19 +32,13 @@ public class ActualMonthView extends JFrame {
         calendar.beginInit();
         calendar.setCurrentTime(DateTime.now());
         DateTime today = DateTime.today();
-
-        //  calendar.setDate(today.addMonths(3));               // dodatkowe miesiace
-        //  calendar.getSelection().set(DateTime.today().addMonths(3));
-
         calendar.setDate(today);
         calendar.getSelection().set(DateTime.today());
-
         calendar.setCurrentView(CalendarView.SingleMonth);
         calendar.setCustomDraw(CustomDrawElements.CalendarItem);
         calendar.getMonthSettings().getDaySettings().setHeaderSize(20);
         calendar.getItemSettings().setSize(32);
         calendar.endInit();
-
 
         getContentPane().add(calendar, BorderLayout.CENTER);
 
@@ -53,17 +47,16 @@ public class ActualMonthView extends JFrame {
     }
 
 
-    public static void main(String[] args) {
-        SwingUtilities.invokeLater(new Runnable() {
-            public void run() {
-                ActualMonthView window = null;
-                try {
-                    window = new ActualMonthView();
-                    window.setVisible(true);
-                } catch (Exception exp) {
-                }
-            }
-        });
-    }
-
+//    public static void main(String[] args) {
+//        SwingUtilities.invokeLater(new Runnable() {
+//            public void run() {
+//                ActualMonthView window = null;
+//                try {
+//                    window = new ActualMonthView();
+//                    window.setVisible(true);
+//                } catch (Exception exp) {
+//                }
+//            }
+//        });
+//    }
 }
