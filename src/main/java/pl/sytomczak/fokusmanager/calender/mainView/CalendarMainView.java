@@ -1,7 +1,7 @@
 package pl.sytomczak.fokusmanager.calender.mainView;
 
 import pl.sytomczak.fokusmanager.calender.clock.Clock;
-import pl.sytomczak.fokusmanager.calender.monthsview.ActualMonthView;
+import pl.sytomczak.fokusmanager.calender.months.ActualMonth;
 
 import javax.swing.*;
 import java.awt.*;
@@ -37,7 +37,7 @@ public class CalendarMainView extends JFrame {
 
 
         Clock.runClock(clockPanel);
-        ActualMonthView.actualMonth(monthPanel);
+        ActualMonth.actualMonth(monthPanel);
 
 
     }
