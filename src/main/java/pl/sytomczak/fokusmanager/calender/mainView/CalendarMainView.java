@@ -1,6 +1,7 @@
 package pl.sytomczak.fokusmanager.calender.mainView;
 
-import pl.sytomczak.fokusmanager.calender.clock.Clock;
+import pl.sytomczak.fokusmanager.clock.Clock;
+import pl.sytomczak.fokusmanager.calender.months.ActualMonth;
 
 import javax.swing.*;
 import java.awt.*;
@@ -16,10 +17,11 @@ public class CalendarMainView extends JFrame {
     private JTextField calendarTitle;
     private JRadioButton yearsRadioButton;
     private JRadioButton newNotesRadioButton;
-    private JPanel actualNameMonthPanel;
     private JPanel legendJPanel;
     private JTextField legendTextField;
     private JEditorPane clockPanel;
+    private JEditorPane monthPanel;
+    private JRadioButton lehendBottom;
 
     public CalendarMainView() {
         setContentPane(mainJPanel);
@@ -32,8 +34,8 @@ public class CalendarMainView extends JFrame {
             }
         }, KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
 
-
         Clock.runClock(clockPanel);
+        ActualMonth.actualMonth(monthPanel);
     }
 
 
