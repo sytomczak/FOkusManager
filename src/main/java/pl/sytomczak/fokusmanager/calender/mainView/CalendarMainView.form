@@ -25,13 +25,14 @@
           <component id="b8803" class="javax.swing.JTextField" binding="calendarTitle">
             <constraints>
               <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="9" fill="0" indent="0" use-parent-layout="false">
-                <preferred-size width="55" height="-1"/>
+                <preferred-size width="75" height="-1"/>
               </grid>
             </constraints>
             <properties>
               <background color="-905690"/>
               <editable value="false"/>
               <enabled value="false"/>
+              <font size="16"/>
               <text value="Calendar"/>
             </properties>
           </component>
@@ -80,6 +81,7 @@
               <enabled value="true"/>
               <font size="18"/>
               <foreground color="-16777216"/>
+              <text value="&lt;html&gt;&#10;  &lt;head&gt;&#10;&#10;  &lt;/head&gt;&#10;  &lt;body&gt;&#10;    &lt;p style=&quot;margin-top: 0&quot;&gt;&#10;    &lt;/p&gt;&#10;&#10;  &lt;/body&gt;&#10;&lt;/html&gt;&#10;"/>
             </properties>
           </component>
         </children>

@@ -12,4 +12,6 @@ public class ActualMonth {
         Calendar cal = Calendar.getInstance();
         monthPanel.setText(new SimpleDateFormat("MMMMMMMMMMM").format(cal.getTime()).toUpperCase());
     }
+
+
 }

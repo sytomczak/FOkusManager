@@ -1,7 +1,6 @@
 package pl.sytomczak.fokusmanager.notes.notesview;
 
 
-import pl.sytomczak.fokusmanager.calendar.jdatapickercalenaer.JDataPickerView;
 import pl.sytomczak.fokusmanager.dbutils.DBConnection;
 
 import javax.swing.*;
@@ -10,6 +9,7 @@ import java.sql.Connection;
 public class NotesView extends JFrame {
     private JTextArea notesArea;
     private JPanel notesJPanel;
+    private JEditorPane titlePanel;
 
 
     public NotesView() {
@@ -21,15 +21,15 @@ public class NotesView extends JFrame {
         setResizable(false);
         setTitle("Notes");
         setContentPane(notesJPanel);
-        JDataPickerView jDataPickerView = new JDataPickerView();
     }
 
     public static void main(String[] args) {
         NotesView notesView = new NotesView();
         notesView.setVisible(true);
 
-        Connection connection = DBConnection.getConnection();
+      //  Connection connection = DBConnection.getConnection();
 
 
     }
+
 }
