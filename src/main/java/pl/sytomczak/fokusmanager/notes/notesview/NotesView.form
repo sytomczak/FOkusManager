@@ -51,7 +51,9 @@
         <properties>
           <background color="-1441874"/>
           <font size="16"/>
+          <lineWrap value="true"/>
           <text value=""/>
+          <wrapStyleWord value="true"/>
         </properties>
       </component>
       <component id="797f9" class="javax.swing.JButton" binding="cutButton" default-binding="true">

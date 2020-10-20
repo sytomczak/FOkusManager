@@ -1,4 +1,4 @@
-package pl.sytomczak.fokusmanager.calender.months;
+package pl.sytomczak.fokusmanager.calendar.months;
 
 import javax.swing.*;
 import java.text.SimpleDateFormat;
