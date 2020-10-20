@@ -10,7 +10,7 @@ import java.awt.datatransfer.Transferable;
 import java.sql.SQLException;
 
 public class NotesOperationsWithDatabase {
-    private JTextArea textArea;
+    private JTextArea notesArea;
     private JTextField titleField;
     private JPanel panel;
     private String filePath;
@@ -25,23 +25,23 @@ public class NotesOperationsWithDatabase {
         return title;
     }
 
-    public NotesOperationsWithDatabase(JTextField titleField, JTextArea textArea, JPanel panel) {
-        if (textArea == null)
+    public NotesOperationsWithDatabase(JTextField titleField, JTextArea notesArea, JPanel panel) {
+        if (notesArea == null)
             return;
 
         this.titleField = titleField;
-        this.textArea = textArea;
+        this.notesArea = notesArea;
         this.panel = panel;
     }
 
     public void New() {
-        if (textArea == null)
+        if (notesArea == null)
             return;
         if (filePath != null)
             if (JOptionPane.showConfirmDialog(JOptionPane.getRootFrame(), "Do you want to overwrite changes") == 0)
                 SaveNew();
-        textArea.selectAll();
-        textArea.replaceSelection("");
+        notesArea.selectAll();
+        notesArea.replaceSelection("");
         notepadItem = new NotepadItem();
         orygText = "";
         titleField.setText("");
@@ -81,14 +81,14 @@ public class NotesOperationsWithDatabase {
                 orygText = notepadItem.getText();
         }
 
-        if (textArea == null)
+        if (notesArea == null)
             return;
 
         try {
 
             OpenOrSaveDialog(true);
             if(notepadItem != null) {
-                textArea.setText(notepadItem.getText());
+                notesArea.setText(notepadItem.getText());
                 titleField.setText(notepadItem.getTitle());
             }
         } catch (SQLException e) {
@@ -102,14 +102,14 @@ public class NotesOperationsWithDatabase {
         if (save == save) {
             notepadModel.AddText(title(), notepadItem.getText());
         }
-        if (textArea == null)
+        if (notesArea == null)
             return;
 
         if (notepadItem == null)
             System.out.println("SelectedItem is null (method Save in NotepadOperationsWithDatabase)");
 
         String content;
-        content = textArea.getText();
+        content = notesArea.getText();
         if (notepadItem != null) {
             notepadItem.setText(content);
             notepadItem.setTitle(title());
@@ -130,14 +130,14 @@ public class NotesOperationsWithDatabase {
         }
     }
         private void SaveNew() {
-            if (textArea == null)
+            if (notesArea == null)
                 return;
 
             try {
 
                 if (notepadItem != null) {
                     notepadItem.setTitle(title());
-                    notepadItem.setText(textArea.getText());
+                    notepadItem.setText(notesArea.getText());
                     notepadModel.AddText(title(), notepadItem.getText());
                 }
             } catch (SQLException e) {
@@ -150,10 +150,10 @@ public class NotesOperationsWithDatabase {
         Clipboard clipboard;
         clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
 
-        String cutString = textArea.getSelectedText();
+        String cutString = notesArea.getSelectedText();
         StringSelection cutSelection = new StringSelection(cutString);
         clipboard.setContents(cutSelection, cutSelection);
-        textArea.replaceRange("", textArea.getSelectionStart(), textArea.getSelectionEnd());
+        notesArea.replaceRange("", notesArea.getSelectionStart(), notesArea.getSelectionEnd());
 
     }
 
@@ -162,7 +162,7 @@ public class NotesOperationsWithDatabase {
         Clipboard clipboard;
         clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
 
-        String copyText = textArea.getSelectedText();
+        String copyText = notesArea.getSelectedText();
         StringSelection copySelection = new StringSelection(copyText);
         clipboard.setContents(copySelection, copySelection);
     }
@@ -173,9 +173,9 @@ public class NotesOperationsWithDatabase {
         clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
 
         try {
-            Transferable pasteText = clipboard.getContents(textArea);
+            Transferable pasteText = clipboard.getContents(notesArea);
             String str = (String) pasteText.getTransferData(DataFlavor.stringFlavor);
-            textArea.replaceRange(str, textArea.getSelectionStart(), textArea.getSelectionEnd());
+            notesArea.replaceRange(str, notesArea.getSelectionStart(), notesArea.getSelectionEnd());
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -183,7 +183,7 @@ public class NotesOperationsWithDatabase {
     }
 
     public void SelectAll() {
-        textArea.selectAll();
+        notesArea.selectAll();
     }
 
 
