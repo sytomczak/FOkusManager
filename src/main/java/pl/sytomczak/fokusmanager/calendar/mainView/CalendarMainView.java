@@ -1,13 +1,16 @@
-package pl.sytomczak.fokusmanager.calender.mainView;
+package pl.sytomczak.fokusmanager.calendar.mainView;
 
-import pl.sytomczak.fokusmanager.clock.Clock;
-import pl.sytomczak.fokusmanager.calender.months.ActualMonth;
+import pl.sytomczak.fokusmanager.calendar.Clock;
+import pl.sytomczak.fokusmanager.calendar.months.ActualMonth;
+import pl.sytomczak.fokusmanager.dbutils.DBConnection;
+import pl.sytomczak.fokusmanager.notes.notesview.NotesView;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
+import java.sql.Connection;
 
 public class CalendarMainView extends JFrame {
     private JPanel mainJPanel;
@@ -21,7 +24,7 @@ public class CalendarMainView extends JFrame {
     private JTextField legendTextField;
     private JEditorPane clockPanel;
     private JEditorPane monthPanel;
-    private JRadioButton lehendBottom;
+    private JRadioButton legendBottom;
 
     public CalendarMainView() {
         setContentPane(mainJPanel);
@@ -33,6 +36,20 @@ public class CalendarMainView extends JFrame {
                 onCancel();
             }
         }, KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
+
+
+        newNotesRadioButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                NotesView notesView = new NotesView();
+                notesView.pack();
+                notesView.setResizable(false);
+                notesView.setVisible(true);
+                notesView.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+                notesView.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+                notesView.setLocationRelativeTo(null);
+            }
+        });
 
         Clock.runClock(clockPanel);
         ActualMonth.actualMonth(monthPanel);
@@ -50,5 +67,9 @@ public class CalendarMainView extends JFrame {
         calendarMainView.setVisible(true);
         calendarMainView.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         calendarMainView.setLocationRelativeTo(null);
+
+        Connection connection = DBConnection.getConnection();
     }
+
+
 }

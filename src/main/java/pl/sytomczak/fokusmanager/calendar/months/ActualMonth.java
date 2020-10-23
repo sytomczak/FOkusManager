@@ -1,4 +1,4 @@
-package pl.sytomczak.fokusmanager.calender.months;
+package pl.sytomczak.fokusmanager.calendar.months;
 
 import javax.swing.*;
 import java.text.SimpleDateFormat;
@@ -11,6 +11,7 @@ public class ActualMonth {
 
         Calendar cal = Calendar.getInstance();
         monthPanel.setText(new SimpleDateFormat("MMMMMMMMMMM").format(cal.getTime()).toUpperCase());
+
     }
 
 

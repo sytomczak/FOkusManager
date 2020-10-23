@@ -1,4 +1,4 @@
-package pl.sytomczak.fokusmanager.clock;
+package pl.sytomczak.fokusmanager.calendar;
 
 import javax.swing.*;
 import java.text.DateFormat;
