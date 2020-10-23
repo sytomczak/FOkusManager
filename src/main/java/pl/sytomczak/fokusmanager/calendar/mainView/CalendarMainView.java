@@ -2,6 +2,7 @@ package pl.sytomczak.fokusmanager.calendar.mainView;
 
 import pl.sytomczak.fokusmanager.calendar.Clock;
 import pl.sytomczak.fokusmanager.calendar.months.ActualMonth;
+import pl.sytomczak.fokusmanager.dbutils.DBConnection;
 import pl.sytomczak.fokusmanager.notes.notesview.NotesView;
 
 import javax.swing.*;
@@ -9,6 +10,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
+import java.sql.Connection;
 
 public class CalendarMainView extends JFrame {
     private JPanel mainJPanel;
@@ -65,6 +67,8 @@ public class CalendarMainView extends JFrame {
         calendarMainView.setVisible(true);
         calendarMainView.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         calendarMainView.setLocationRelativeTo(null);
+
+        Connection connection = DBConnection.getConnection();
     }
 
 

@@ -10,6 +10,7 @@ import java.awt.datatransfer.Transferable;
 import java.sql.SQLException;
 
 public class NotesOperationsWithDatabase {
+
     private JTextArea notesArea;
     private JTextField titleField;
     private JPanel panel;
@@ -18,8 +19,7 @@ public class NotesOperationsWithDatabase {
     private NotepadItem notepadItem = new NotepadItem();
     private String orygText;
 
-    private String title()
-    {
+    private String title() {
         String title;
         title = titleField.getText();
         return title;
@@ -49,7 +49,7 @@ public class NotesOperationsWithDatabase {
 
     public void OpenDialog(String text) throws SQLException {
         notepadItem = notepadModel.getItemByText(text);
-        if(notepadItem != null)
+        if (notepadItem != null)
             orygText = notepadItem.getText();
     }
 
@@ -75,9 +75,9 @@ public class NotesOperationsWithDatabase {
 
         boolean open = true;
 
-        if(open == open) {
+        if (open == open) {
             notepadItem = notepadModel.getItemByTitle(title());
-            if(notepadItem != null)
+            if (notepadItem != null)
                 orygText = notepadItem.getText();
         }
 
@@ -87,7 +87,7 @@ public class NotesOperationsWithDatabase {
         try {
 
             OpenOrSaveDialog(true);
-            if(notepadItem != null) {
+            if (notepadItem != null) {
                 notesArea.setText(notepadItem.getText());
                 titleField.setText(notepadItem.getTitle());
             }
@@ -129,21 +129,22 @@ public class NotesOperationsWithDatabase {
             ex.printStackTrace();
         }
     }
-        private void SaveNew() {
-            if (notesArea == null)
-                return;
 
-            try {
+    private void SaveNew() {
+        if (notesArea == null)
+            return;
 
-                if (notepadItem != null) {
-                    notepadItem.setTitle(title());
-                    notepadItem.setText(notesArea.getText());
-                    notepadModel.AddText(title(), notepadItem.getText());
-                }
-            } catch (SQLException e) {
-                e.printStackTrace();
+        try {
+
+            if (notepadItem != null) {
+                notepadItem.setTitle(title());
+                notepadItem.setText(notesArea.getText());
+                notepadModel.AddText(title(), notepadItem.getText());
             }
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
+    }
 
 
     public void Cut() {
@@ -188,7 +189,7 @@ public class NotesOperationsWithDatabase {
 
 
     class myHighlighter extends DefaultHighlighter.DefaultHighlightPainter {
-        public  myHighlighter(Color color) {
+        public myHighlighter(Color color) {
             super(color);
         }
     }
@@ -196,27 +197,28 @@ public class NotesOperationsWithDatabase {
     Highlighter.HighlightPainter highlightPainter = new NotesOperationsWithDatabase.myHighlighter(Color.yellow);
 
 
-    public void removeHighLight(JTextComponent textComponent){
+    public void removeHighLight(JTextComponent textComponent) {
         Highlighter removeHighlighter = textComponent.getHighlighter();
         Highlighter.Highlight[] remove = removeHighlighter.getHighlights();
 
-        for(int i = 0; i<remove.length; i++){
-            if(remove[i].getPainter() instanceof NotesOperationsWithDatabase.myHighlighter){
+        for (int i = 0; i < remove.length; i++) {
+            if (remove[i].getPainter() instanceof NotesOperationsWithDatabase.myHighlighter) {
                 removeHighlighter.removeHighlight(remove[i]);
             }
         }
     }
-    public void Search(JTextComponent textComponent, String textString){
+
+    public void Search(JTextComponent textComponent, String textString) {
         removeHighLight(textComponent);
 
-        try{
+        try {
             Highlighter highlighter = textComponent.getHighlighter();
             Document doc = textComponent.getDocument();
             String text = doc.getText(0, doc.getLength());
             int pos = 0;
 
-            while((pos = text.toUpperCase().indexOf(textString.toUpperCase(), pos)) >= 0) {
-                highlighter.addHighlight(pos, pos+textString.length(), highlightPainter);
+            while ((pos = text.toUpperCase().indexOf(textString.toUpperCase(), pos)) >= 0) {
+                highlighter.addHighlight(pos, pos + textString.length(), highlightPainter);
                 pos += textString.length();
             }
         } catch (BadLocationException e) {

@@ -1,13 +1,11 @@
 package pl.sytomczak.fokusmanager.notes.notesview;
 
 
-import pl.sytomczak.fokusmanager.dbutils.DBConnection;
 import pl.sytomczak.fokusmanager.notes.NotesOperationsWithDatabase;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.Connection;
 
 public class NotesView extends JFrame {
     private JTextArea notesArea;
@@ -21,7 +19,7 @@ public class NotesView extends JFrame {
     private JButton selectAllButton;
     private JTextField searchField;
     private JButton searchButton;
-    private JTextField textField1;
+    private JTextField titleField;
 
     NotesOperationsWithDatabase notesOperationsWithDatabase;
 
@@ -35,7 +33,7 @@ public class NotesView extends JFrame {
         setTitle("Notes");
         setContentPane(notesJPanel);
         InitializeButtons();
-        notesOperationsWithDatabase = new NotesOperationsWithDatabase(textField1, notesArea, notesJPanel);
+        notesOperationsWithDatabase = new NotesOperationsWithDatabase(titleField, notesArea, notesJPanel);
     }
 
     private void InitializeButtons() {
@@ -87,7 +85,7 @@ public class NotesView extends JFrame {
         NotesView notesView = new NotesView();
         notesView.setVisible(true);
 
-        Connection connection = DBConnection.getConnection();
+
 
     }
 

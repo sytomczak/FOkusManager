@@ -4,21 +4,28 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
 public class NotepadItem {
+
     public String getText() {
         return text.get();
     }
-    public String getTitle() {return title.get(); }
+
+    public String getTitle() {
+        return title.get();
+    }
 
     public StringProperty textProperty() {
         return text;
     }
-    public StringProperty titleProperty() {return title; }
+
+    public StringProperty titleProperty() {
+        return title;
+    }
 
     public void setText(String text) {
         this.text.set(text);
     }
 
-    public void setTitle(String title){
+    public void setTitle(String title) {
         this.title.set(title);
     }
 
@@ -26,8 +33,7 @@ public class NotepadItem {
     private StringProperty title;
 
 
-    public NotepadItem()
-    {
+    public NotepadItem() {
         this.title = new SimpleStringProperty("");
         this.text = new SimpleStringProperty("");
     }
@@ -37,8 +43,7 @@ public class NotepadItem {
     }
 
 
-    public NotepadItem(String title, String text)
-    {
+    public NotepadItem(String title, String text) {
         this.title = new SimpleStringProperty(title);
         this.text = new SimpleStringProperty(text);
     }

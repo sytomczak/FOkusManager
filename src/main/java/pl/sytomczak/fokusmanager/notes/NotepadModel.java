@@ -11,35 +11,35 @@ import java.util.ArrayList;
 public class NotepadModel {
     private Connection connection;
 
-    public boolean isDatabaseConnecter(){ return this.connection != null; }
-
-    public NotepadModel(){
-        this.connection = DBConnection.getConnection();
+    public boolean isDatabaseConnecter() {
+        return this.connection != null;
     }
 
+    public NotepadModel() {
+        this.connection = DBConnection.getConnection();
+    }
 
     public NotepadItem getItemByTitle(String title) throws SQLException {
         String msg = "";
         PreparedStatement ps = null;
         ResultSet rs = null;
 
-        try{
-            ps = this.connection.prepareStatement("SELECT * FROM texts WHERE title = ?");
+        try {
+            ps = this.connection.prepareStatement("SELECT * FROM notes WHERE title = ?");
             ps.setString(1, title);
 
             rs = ps.executeQuery();
-            if(rs.next())
+            if (rs.next())
                 return new NotepadItem(rs.getString(1), rs.getString(2));
 
             return null;
         } catch (SQLException e) {
             e.printStackTrace();
-            return  null;
-        }
-        finally {
-            if(ps != null)
+            return null;
+        } finally {
+            if (ps != null)
                 ps.close();
-            if(rs != null)
+            if (rs != null)
                 rs.close();
         }
     }
@@ -50,23 +50,22 @@ public class NotepadModel {
         PreparedStatement ps = null;
         ResultSet rs = null;
 
-        try{
-            ps = this.connection.prepareStatement("SELECT * FROM texts WHERE text = ?");
+        try {
+            ps = this.connection.prepareStatement("SELECT * FROM notes WHERE text = ?");
             ps.setString(1, text);
 
             rs = ps.executeQuery();
-            if(rs.next())
-                return new NotepadItem( rs.getString(1));
+            if (rs.next())
+                return new NotepadItem(rs.getString(1));
 
             return null;
         } catch (SQLException e) {
             e.printStackTrace();
-            return  null;
-        }
-        finally {
-            if(ps != null)
+            return null;
+        } finally {
+            if (ps != null)
                 ps.close();
-            if(rs != null)
+            if (rs != null)
                 rs.close();
         }
     }
@@ -77,22 +76,21 @@ public class NotepadModel {
         ResultSet rs = null;
         ArrayList<NotepadItem> items = new ArrayList<NotepadItem>();
 
-        try{
-            ps = this.connection.prepareStatement("SELECT * FROM texts");
+        try {
+            ps = this.connection.prepareStatement("SELECT * FROM notes");
 
             rs = ps.executeQuery();
             while (rs.next())
-                items.add( new NotepadItem(rs.getString(1), rs.getString(2)));
+                items.add(new NotepadItem(rs.getString(1), rs.getString(2)));
 
             return items;
         } catch (SQLException e) {
             e.printStackTrace();
-            return  null;
-        }
-        finally {
-            if(ps != null)
+            return null;
+        } finally {
+            if (ps != null)
                 ps.close();
-            if(rs != null)
+            if (rs != null)
                 rs.close();
         }
     }
@@ -102,23 +100,22 @@ public class NotepadModel {
         PreparedStatement ps = null;
         ResultSet rs = null;
 
-        try{
-            ps = this.connection.prepareStatement("INSERT INTO texts (title, text) VALUES (?,?)");
+        try {
+            ps = this.connection.prepareStatement("INSERT INTO notes (title, text) VALUES (?,?)");
             ps.setString(1, title);
             ps.setString(2, text);
-            if(ps.executeUpdate() != 0)
+            if (ps.executeUpdate() != 0)
                 return true;
             else
                 return false;
 
         } catch (SQLException e) {
             e.printStackTrace();
-            return  false;
-        }
-        finally {
-            if(ps != null)
+            return false;
+        } finally {
+            if (ps != null)
                 ps.close();
-            if(rs != null)
+            if (rs != null)
                 rs.close();
         }
     }
@@ -128,21 +125,20 @@ public class NotepadModel {
         PreparedStatement ps = null;
         ResultSet rs = null;
 
-        try{
-            ps = this.connection.prepareStatement("SELECT Count(title) FROM texts WHERE ?");
+        try {
+            ps = this.connection.prepareStatement("SELECT Count(title) FROM notes WHERE ?");
             ps.setString(1, title);
 
             rs = ps.executeQuery();
             Integer n = rs.getInt(1);
-            return n >0;
+            return n > 0;
         } catch (SQLException e) {
             e.printStackTrace();
-            return  false;
-        }
-        finally {
-            if(ps != null)
+            return false;
+        } finally {
+            if (ps != null)
                 ps.close();
-            if(rs != null)
+            if (rs != null)
                 rs.close();
         }
     }
@@ -152,23 +148,22 @@ public class NotepadModel {
         PreparedStatement ps = null;
         ResultSet rs = null;
 
-        try{
-            ps = this.connection.prepareStatement("UPDATE texts SET text = ? WHERE title = ?");
+        try {
+            ps = this.connection.prepareStatement("UPDATE notes SET text = ? WHERE title = ?");
             ps.setString(1, newText);
             ps.setString(2, title);
 
-            if(ps.executeUpdate() != 0)
+            if (ps.executeUpdate() != 0)
                 return true;
             else
                 return false;
         } catch (SQLException e) {
             e.printStackTrace();
-            return  false;
-        }
-        finally {
-            if(ps != null)
+            return false;
+        } finally {
+            if (ps != null)
                 ps.close();
-            if(rs != null)
+            if (rs != null)
                 rs.close();
         }
     }
