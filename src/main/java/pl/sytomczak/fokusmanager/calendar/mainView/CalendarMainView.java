@@ -2,6 +2,7 @@ package pl.sytomczak.fokusmanager.calendar.mainView;
 
 import pl.sytomczak.fokusmanager.calendar.Clock;
 import pl.sytomczak.fokusmanager.calendar.months.ActualMonth;
+import pl.sytomczak.fokusmanager.calendar.months.Months;
 import pl.sytomczak.fokusmanager.dbutils.DBConnection;
 import pl.sytomczak.fokusmanager.notes.notesview.NotesView;
 
@@ -11,6 +12,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.sql.Connection;
+import java.time.Month;
+import java.util.Map;
 
 public class CalendarMainView extends JFrame {
     private JPanel mainJPanel;
@@ -25,6 +28,8 @@ public class CalendarMainView extends JFrame {
     private JEditorPane clockPanel;
     private JEditorPane monthPanel;
     private JRadioButton legendBottom;
+
+    private Months months;
 
     public CalendarMainView() {
         setContentPane(mainJPanel);
@@ -59,6 +64,12 @@ public class CalendarMainView extends JFrame {
     private void onCancel() {
         dispose();
     }
+
+//    private int controlsInActualMonth() {
+//        for(int i =0; i == months.daysInMonth(); i++){
+//
+//        }
+//    }
 
     public static void main(String[] args) {
         CalendarMainView calendarMainView = new CalendarMainView();

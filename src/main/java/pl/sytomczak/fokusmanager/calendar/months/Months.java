@@ -6,13 +6,13 @@ import java.util.Map;
 
 public class Months {
 
-    private int year;
-    private int month;
+//    private int year;
+//    private int month;
     private ActualMonth actualMonth;
 
 
     //  private Map<String, Integer> daysInMonths(String months, Integer days){
-    private int daysInMonth() {
+    public int daysInMonth() {
         Map<String, Integer> daysInMonths = new HashMap<>();
         daysInMonths.put("January", 31);
         daysInMonths.put("February", 28);
@@ -38,13 +38,4 @@ public class Months {
         return value;
     }
 
-    public int daysInActualMonth() {
-        daysInMonth();
-    }
-
-    private static int daysInMonth(GregorianCalendar c) {
-        final int[] daysInMonths = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
-        daysInMonths[1] += c.isLeapYear(c.get(GregorianCalendar.YEAR)) ? 1 : 0;
-        return daysInMonths[c.get(GregorianCalendar.MONTH)];
-    }
 }
