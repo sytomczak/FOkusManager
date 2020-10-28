@@ -52,7 +52,7 @@ public class CalendarMainView extends JFrame {
         });
 
         Clock.runClock(clockPanel);
-        ActualMonth.actualMonth(monthPanel);
+        ActualMonth.setActualMonth(monthPanel);
     }
 
 
