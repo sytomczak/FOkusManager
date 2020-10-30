@@ -1,5 +1,6 @@
 package pl.sytomczak.fokusmanager.calendar.mainView;
 
+import com.mindfusion.drawing.Colors;
 import pl.sytomczak.fokusmanager.calendar.Clock;
 import pl.sytomczak.fokusmanager.calendar.months.ActualMonth;
 import pl.sytomczak.fokusmanager.calendar.months.Months;
@@ -7,13 +8,13 @@ import pl.sytomczak.fokusmanager.dbutils.DBConnection;
 import pl.sytomczak.fokusmanager.notes.notesview.NotesView;
 
 import javax.swing.*;
+import javax.swing.border.Border;
+import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.sql.Connection;
-import java.time.Month;
-import java.util.Map;
 
 public class CalendarMainView extends JFrame {
     private JPanel mainJPanel;
@@ -31,7 +32,7 @@ public class CalendarMainView extends JFrame {
 
     private Months months;
 
-    public CalendarMainView() {
+    public CalendarMainView() throws Exception {
         setContentPane(mainJPanel);
         setTitle("FocusManager");
 
@@ -58,6 +59,10 @@ public class CalendarMainView extends JFrame {
 
         Clock.runClock(clockPanel);
         ActualMonth.setActualMonth(monthPanel);
+        controlsInActualMonth();
+
+        months = new Months();
+        months.daysInMonth();
     }
 
 
@@ -65,22 +70,52 @@ public class CalendarMainView extends JFrame {
         dispose();
     }
 
-//    private int controlsInActualMonth() {
-//        for(int i =0; i == months.daysInMonth(); i++){
-//
+    private void controlsInActualMonth() throws Exception {
+
+        //for(int i = 0; i)
+
+//        for (int i = 0; i == 3; i++) {
+//            JButton dayButton = new JButton();
+//            dayButton.setBackground(Color.yellow);
+//            dayButton.setSize(80, 80);
+//            dayButton.setName(String.valueOf(i));
+//            dayButton.setLayout(null);
+//            calendarJPanel.add(dayButton);
+//            i = i++;
 //        }
-//    }
 
-    public static void main(String[] args) {
-        CalendarMainView calendarMainView = new CalendarMainView();
-        calendarMainView.pack();
-        calendarMainView.setResizable(false);
-        calendarMainView.setVisible(true);
-        calendarMainView.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-        calendarMainView.setLocationRelativeTo(null);
+        int i = 0;
 
-        Connection connection = DBConnection.getConnection();
+//        do {
+//            try {
+//                JButton dayButton = new JButton();
+//                dayButton.setBackground(Color.yellow);
+//                dayButton.setSize(10, 10);
+//                //dayButton.setLayout(null);
+//                dayButton.setName(String.valueOf(i));
+//                JLabel lb = new JLabel();
+//                lb.setText("asdasdasd");
+//                if(calendarJPanel != null)
+//                    calendarJPanel.add(lb); //dayButton);
+//                i++;
+//            } catch (Exception ex) {
+//                String s = "";
+//            }
+//        }
+//        while (i >= 3);
     }
 
 
-}
+            public static void main (String[]args) throws Exception {
+                CalendarMainView calendarMainView = new CalendarMainView();
+                calendarMainView.pack();
+                calendarMainView.setResizable(false);
+                calendarMainView.setVisible(true);
+                calendarMainView.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+                calendarMainView.setLocationRelativeTo(null);
+
+                Connection connection = DBConnection.getConnection();
+            }
+
+
+        }
