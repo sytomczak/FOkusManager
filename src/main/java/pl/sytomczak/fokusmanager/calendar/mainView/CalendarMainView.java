@@ -4,6 +4,7 @@ import com.mindfusion.drawing.Colors;
 import org.joda.time.Days;
 import pl.sytomczak.fokusmanager.calendar.Clock;
 import pl.sytomczak.fokusmanager.calendar.months.ActualMonth;
+import pl.sytomczak.fokusmanager.calendar.months.ActualYear;
 import pl.sytomczak.fokusmanager.calendar.months.Months;
 import pl.sytomczak.fokusmanager.dbutils.DBConnection;
 import pl.sytomczak.fokusmanager.notes.notesview.NotesView;
@@ -34,8 +35,11 @@ public class CalendarMainView extends JFrame {
     private JEditorPane clockPanel;
     private JEditorPane monthPanel;
     private JRadioButton legendBottom;
+    private JEditorPane yearsPanel;
 
     private Months months;
+    private ActualYear actualYear;
+
 
     public CalendarMainView() throws Exception {
         setContentPane(mainJPanel);
@@ -63,11 +67,17 @@ public class CalendarMainView extends JFrame {
         });
 
         Clock.runClock(clockPanel);
+
         ActualMonth.setActualMonth(monthPanel);
-        controlsInActualMonth();
 
         months = new Months();
         months.daysInMonth();
+
+        ActualYear.getActualYear(yearsPanel);
+
+        controlsInActualMonth();
+
+
     }
 
 
