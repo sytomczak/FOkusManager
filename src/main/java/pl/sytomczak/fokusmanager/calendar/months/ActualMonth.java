@@ -14,7 +14,6 @@ public class ActualMonth {
     }
 
     public static void setActualMonth(JEditorPane monthPanel) {
-
         ActualMonth choseGetActualMonthMethod = new ActualMonth();
         monthPanel.setText(choseGetActualMonthMethod.getActualMonth().toUpperCase());
 
