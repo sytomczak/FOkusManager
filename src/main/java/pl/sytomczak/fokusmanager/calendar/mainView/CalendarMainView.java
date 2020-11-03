@@ -1,6 +1,7 @@
 package pl.sytomczak.fokusmanager.calendar.mainView;
 
 import com.mindfusion.drawing.Colors;
+import org.joda.time.Days;
 import pl.sytomczak.fokusmanager.calendar.Clock;
 import pl.sytomczak.fokusmanager.calendar.months.ActualMonth;
 import pl.sytomczak.fokusmanager.calendar.months.Months;
@@ -15,6 +16,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.sql.Connection;
+import java.time.Month;
+import java.time.Year;
+import java.time.YearMonth;
+import java.util.Calendar;
 
 public class CalendarMainView extends JFrame {
     private JPanel mainJPanel;
@@ -115,6 +120,16 @@ public class CalendarMainView extends JFrame {
                 calendarMainView.setLocationRelativeTo(null);
 
                 Connection connection = DBConnection.getConnection();
+
+                int year = YearMonth.now().getYear();
+//                int month = YearMonth.now().getMonthValue();
+
+                Months months = new Months();
+                System.out.println(months.Days(1,year));  // metoda zle pokazuje dni!
+
+//                YearMonth yearMonthObject = YearMonth.of(year, month);
+//                int daysInMonth = yearMonthObject.lengthOfMonth();
+//                System.out.println(daysInMonth);
             }
 
 
