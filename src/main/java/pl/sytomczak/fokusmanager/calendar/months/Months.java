@@ -1,10 +1,6 @@
 package pl.sytomczak.fokusmanager.calendar.months;
 
-import java.text.DateFormatSymbols;
 import java.time.YearMonth;
-import java.util.Calendar;
-import java.util.HashMap;
-import java.util.Map;
 
 public class Months {
 
