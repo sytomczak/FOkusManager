@@ -37,8 +37,8 @@ public class CalendarMainView extends JFrame {
     private JRadioButton legendBottom;
     private JEditorPane yearsPanel;
 
-    private Months months;
-    private ActualYear actualYear;
+    private Months months = new Months();
+    private ActualYear actualYear = new ActualYear();
 
 
     public CalendarMainView() throws Exception {
@@ -70,13 +70,19 @@ public class CalendarMainView extends JFrame {
 
         ActualMonth.setActualMonth(monthPanel);
 
-        months = new Months();
         months.daysInMonth();
 
         ActualYear.getActualYear(yearsPanel);
 
         controlsInActualMonth();
 
+//        JButton dayButton = new JButton();
+//        dayButton.setBackground(Color.yellow);
+//        calendarJPanel.setLayout(null);
+//     //   dayButton.setSize(80, 80);
+//        dayButton.setText(String.valueOf(1));
+//        dayButton.setBounds(623, 113, 80, 80);
+//        calendarJPanel.add(dayButton);
 
     }
 
@@ -87,19 +93,19 @@ public class CalendarMainView extends JFrame {
 
     private void controlsInActualMonth() throws Exception {
 
-        //for(int i = 0; i)
 
-//        for (int i = 0; i == 3; i++) {
-//            JButton dayButton = new JButton();
-//            dayButton.setBackground(Color.yellow);
-//            dayButton.setSize(80, 80);
-//            dayButton.setName(String.valueOf(i));
-//            dayButton.setLayout(null);
-//            calendarJPanel.add(dayButton);
-//            i = i++;
-//        }
-
-        int i = 0;
+        for (int i = 0; i <= months.daysInMonth(); i++) {
+        JButton dayButton = new JButton();
+        dayButton.setBackground(Color.yellow);
+        calendarJPanel.setLayout(null);
+          dayButton.setSize(80, 80);
+        dayButton.setText(String.valueOf(i +1));
+        dayButton.setBounds(623 + i+70 , 113 + i+70, 80, 80);
+        calendarJPanel.add(dayButton);
+        i = i++;
+        }
+//
+//        int i = 0;
 
 //        do {
 //            try {
@@ -131,15 +137,13 @@ public class CalendarMainView extends JFrame {
 
                 Connection connection = DBConnection.getConnection();
 
-                int year = YearMonth.now().getYear();
+//                int year = YearMonth.now().getYear();
 //                int month = YearMonth.now().getMonthValue();
-
-                Months months = new Months();
-                System.out.println(months.Days(1,year));  // metoda zle pokazuje dni!
-
+//
+//
 //                YearMonth yearMonthObject = YearMonth.of(year, month);
 //                int daysInMonth = yearMonthObject.lengthOfMonth();
-//                System.out.println(daysInMonth);
+                System.out.println(calendarMainView.months.daysInMonth());
             }
 
 

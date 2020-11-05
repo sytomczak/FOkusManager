@@ -42,13 +42,14 @@ public class Months {
         return daysInMonth;
     }
 
-    public int Days(int month, int year) {  //private było,  tutaj zle przipsuje dni do miesiaca
-        Calendar calendar = Calendar.getInstance();
-        calendar.set(Calendar.YEAR, year);
-        calendar.set(Calendar.MONTH, month);
 
-        return calendar.getActualMaximum(Calendar.DATE);
-    }
+//    public int Days(int month, int year) {  //private było,  tutaj zle przipsuje dni do miesiaca
+//        Calendar calendar = Calendar.getInstance();
+//        calendar.set(Calendar.YEAR, year);
+//        calendar.set(Calendar.MONTH, month);
+//
+//        return calendar.getActualMaximum(Calendar.DATE);
+//    }
 }
 
 
