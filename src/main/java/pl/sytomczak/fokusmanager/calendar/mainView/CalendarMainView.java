@@ -69,57 +69,41 @@ public class CalendarMainView extends JFrame {
     }
 
     public void createControls() {
-        int addSpace = 0;
-
         dayButton = new JButton();
         dayButton.setBackground(Color.yellow);
         calendarJPanel.setLayout(null);
-     //   dayButton.setSize(80, 80);
-        addSpace = addSpace + 40;
+        dayButton.setSize(80, 80);
         calendarJPanel.add(dayButton);
-
     }
+
     private void controlsInActualMonth() {
 
         int addSpace = 0;
+        int addSpace2 = 0;
+        int addSpace3 = 0;
+        int addSpace4 = 0;
 
         for (int i = 0; i <= months.daysInMonth(); i++) {
-            dayButton = new JButton();
-            dayButton.setBackground(Color.yellow);
-            calendarJPanel.setLayout(null);
-            //   dayButton.setSize(80, 80);
-            addSpace = addSpace + 40;
-            calendarJPanel.add(dayButton);
+
+            createControls();
+
             dayButton.setText(String.valueOf(i + 1));
 
             if (i <= 6) {
-               // createControls();
-
-                dayButton.setBounds(60 + addSpace , 50,80,80);
+                dayButton.setLocation(60 + addSpace, 50);
+                addSpace = addSpace + 80;
 
             } else if (i >= 6 && i <= 13) {
-                //createControls();
-                dayButton.setBounds(60 + addSpace, 150, 80,80);
+                dayButton.setLocation(60 + addSpace2, 170);
+                addSpace2 = addSpace2 + 80;
 
             } else if (i > 13 && i <= 20) {
-             //   createControls();
-                dayButton.setBounds(60 + addSpace, 300, 80,80);
+                dayButton.setLocation(60 + addSpace3, 290);
+                addSpace3 = addSpace3 + 80;
 
             } else if (i > 20) {
-               // createControls();
-                dayButton.setBounds(60 + addSpace, 450, 80, 80);
-
-
-
-//            JButton dayButton = new JButton();
-//            dayButton.setBackground(Color.yellow);
-//            calendarJPanel.setLayout(null);
-//            dayButton.setSize(80, 80);
-//            dayButton.setText(String.valueOf(i + 1));
-//            dayButton.setBounds(60 + addSpace , 60, 80, 80);
-//            addSpace = addSpace + 40;
-//            calendarJPanel.add(dayButton);
-                //            i = i++;
+                dayButton.setLocation(60 + addSpace4, 410);
+                addSpace4 = addSpace4 + 80;
             }
             i = i++;
         }
@@ -138,9 +122,5 @@ public class CalendarMainView extends JFrame {
         calendarMainView.setLocationRelativeTo(null);
 
         Connection connection = DBConnection.getConnection();
-
-        System.out.println(calendarMainView.months.daysInMonth());
     }
-
-
 }
