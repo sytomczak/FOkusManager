@@ -91,7 +91,7 @@ public class CalendarMainView extends JFrame {
 
             if (i <= 6) {
                 dayButton.setLocation(60 + addSpace, 50);
-                addSpace = addSpace + 80;
+                addSpace = addSpace + 120;
 
             } else if (i >= 6 && i <= 13) {
                 dayButton.setLocation(60 + addSpace2, 170);
