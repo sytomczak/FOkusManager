@@ -7,10 +7,15 @@ import java.util.Calendar;
 
 public class ActualMonth {
 
-    public static void actualMonth(JEditorPane monthPanel) {
-
+    public String getActualMonth() {
         Calendar cal = Calendar.getInstance();
-        monthPanel.setText(new SimpleDateFormat("MMMMMMMMMMM").format(cal.getTime()).toUpperCase());
+        return new SimpleDateFormat("MMMMMMMMMMM").format(cal.getTime());
+
+    }
+
+    public static void setActualMonth(JEditorPane monthPanel) {
+        ActualMonth choseGetActualMonthMethod = new ActualMonth();
+        monthPanel.setText(choseGetActualMonthMethod.getActualMonth().toUpperCase());
 
     }
 
