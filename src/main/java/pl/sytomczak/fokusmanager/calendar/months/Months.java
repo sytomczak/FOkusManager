@@ -1,6 +1,8 @@
 package pl.sytomczak.fokusmanager.calendar.months;
 
+import java.time.DayOfWeek;
 import java.time.YearMonth;
+import java.util.*;
 
 
 public class Months {
@@ -25,6 +27,15 @@ public class Months {
         String firstDay = yearMonthObject().atDay(1).getDayOfWeek().name();
         return firstDay;
     }
+
+    public DayOfWeek getDayOfMonth(Integer month)
+    {
+        Integer temp = month;
+        temp = month <= 0 ? 1 : month;
+        temp = temp > 12 ? 12 : temp;
+        return yearMonthObject().atDay(temp).getDayOfWeek();
+    }
+
     public String lastDayOfActualMonth() {
         String lastDay = yearMonthObject().atEndOfMonth().getDayOfWeek().name();
         return lastDay;

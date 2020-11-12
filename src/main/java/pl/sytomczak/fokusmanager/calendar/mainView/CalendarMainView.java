@@ -13,6 +13,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.sql.Connection;
+import java.time.DayOfWeek;
+import java.util.Date;
+import java.util.List;
 
 public class CalendarMainView extends JFrame {
     private JPanel mainJPanel;
@@ -85,11 +88,17 @@ public class CalendarMainView extends JFrame {
 
         for (int i = 0; i <= months.daysInMonth(); i++) {
 
+
             createControls();
 
             dayButton.setText(String.valueOf(i + 1));
 
-            if (i <= 6) {
+            /*
+                DayOfWeek day = months.getDayOfMonth(i);
+                String name = day.name();
+                Integer nr = day.getValue();
+             */
+            if (i <= 6){
                 dayButton.setLocation(60 + addSpace, 50);
                 addSpace = addSpace + 120;
 
