@@ -10,7 +10,6 @@ import java.awt.event.ActionListener;
 import com.jgoodies.forms.layout.CellConstraints;
 
 public class NotesView extends JFrame {
-    private JTextArea notesArea;
     private JPanel notesJPanel;
     private JEditorPane titlePanel;
     private JButton newNoteButton;
@@ -22,18 +21,18 @@ public class NotesView extends JFrame {
     private JTextField searchField;
     private JButton searchButton;
     private JTextField titleField;
-    private JScrollPane notesAreaScrollPanel;
+    private JTextArea notesArea;
 
     NotesOperationsWithDatabase notesOperationsWithDatabase;
 
     public NotesView() {
 
         //GridLayout gl = new GridLayout(5, 5);
-        CellConstraints cc = new CellConstraints();
+        //CellConstraints cc = new CellConstraints();
 
 
         //notesJPanel.remove(notesAreaScrollPanel);
-         add(new JTextArea(), cc.rchw(0,0,3,1));
+         //add(new JTextArea(), cc.rchw(0,0,3,1));
         //notesJPanel.add(notesAreaScrollPanel);
         /*JButton goldSeat;
         JButton silverSeat;
@@ -103,6 +102,7 @@ public class NotesView extends JFrame {
         });
         selectAllButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
+
                 notesOperationsWithDatabase.SelectAll();
             }
         });
@@ -117,9 +117,6 @@ public class NotesView extends JFrame {
     public static void main(String[] args) {
         NotesView notesView = new NotesView();
         notesView.setVisible(true);
-
-
-
     }
 
 }

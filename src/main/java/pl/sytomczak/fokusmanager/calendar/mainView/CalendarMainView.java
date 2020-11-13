@@ -13,9 +13,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.sql.Connection;
-import java.time.DayOfWeek;
-import java.util.Date;
-import java.util.List;
+
 
 public class CalendarMainView extends JFrame {
     private JPanel mainJPanel;
@@ -100,7 +98,7 @@ public class CalendarMainView extends JFrame {
              */
             if (i <= 6){
                 dayButton.setLocation(60 + addSpace, 50);
-                addSpace = addSpace + 120;
+                addSpace = addSpace + 80;
 
             } else if (i >= 6 && i <= 13) {
                 dayButton.setLocation(60 + addSpace2, 170);
