@@ -79,49 +79,46 @@ public class CalendarMainView extends JFrame {
 
     private void controlsInActualMonth() {
 
+        int numberOfDaysEarlierInFirstMonday = months.numberOfDaysToTheFirstMondayInActualMonth() - 1;
         int addSpace = 0;
+        int addSpace1 = 0;
         int addSpace2 = 0;
         int addSpace3 = 0;
         int addSpace4 = 0;
+        int addSpace5 = 0;
 
 
-        for (int i = 0; i <= months.daysInMonth(); i++) {
 
+        for (int i = 0; i <= months.daysInMonth() -1; i++) {
 
             createControls();
-
             dayButton.setText(String.valueOf(i + 1));
 
-            /*
-                DayOfWeek day = months.getDayOfMonth(i);
-                String name = day.name();
-                Integer nr = day.getValue();
-             */
+            if (i < numberOfDaysEarlierInFirstMonday) {
+                dayButton.setLocation(170 + (880 - (months.numberOfDaysToTheFirstMondayInActualMonth() * 110)) + addSpace, 30);
+                addSpace = addSpace + 110;
 
-//            do{
-//                months.firstDayOfMonth() + 1
-//            }while(months.firstDayOfMonth() != "MONDAY");
-            if (i <= 6) {
-//                do{
-//                    dayButton.setLocation(360 - addSpace, 50);
-//                    addSpace = addSpace + 80;
-//                }while(months.firstMondayInActualMonths() != );
-//
-                dayButton.setLocation(60 + addSpace, 50);
-                addSpace = addSpace + 80;
+            } else if (i <= 6 + numberOfDaysEarlierInFirstMonday) {
+                dayButton.setLocation(170 + addSpace1, 120);
+                addSpace1 = addSpace1 + 110;
 
-            } else if (i >= 6 && i <= 13) {
-                dayButton.setLocation(60 + addSpace2, 170);
-                addSpace2 = addSpace2 + 80;
+            } else if (i >= 6 + numberOfDaysEarlierInFirstMonday && i <= 13 + numberOfDaysEarlierInFirstMonday) {
+                dayButton.setLocation(170 + addSpace2, 210);
+                addSpace2 = addSpace2 + 110;
 
-            } else if (i > 13 && i <= 20) {
-                dayButton.setLocation(60 + addSpace3, 290);
-                addSpace3 = addSpace3 + 80;
+            } else if (i > 13 + numberOfDaysEarlierInFirstMonday && i <= 20 + numberOfDaysEarlierInFirstMonday) {
+                dayButton.setLocation(170 + addSpace3, 300);
+                addSpace3 = addSpace3 + 110;
 
-            } else if (i > 20) {
-                dayButton.setLocation(60 + addSpace4, 410);
-                addSpace4 = addSpace4 + 80;
+            } else if (i > 20 + numberOfDaysEarlierInFirstMonday && i <= 27 + numberOfDaysEarlierInFirstMonday) {
+                dayButton.setLocation(170 + addSpace4, 390);
+                addSpace4 = addSpace4 + 110;
+
+            } else if(i > 27 + numberOfDaysEarlierInFirstMonday && i <= months.daysInMonth() -1){
+                dayButton.setLocation(170 + addSpace5, 480);
+                addSpace5 = addSpace5 + 110;
             }
+
             i = i++;
         }
     }
@@ -141,9 +138,9 @@ public class CalendarMainView extends JFrame {
         Connection connection = DBConnection.getConnection();
 
         Months months = new Months();
-      //  System.out.println(months.firstDayOfMonth());
+        //  System.out.println(months.firstDayOfMonth());
         System.out.println(months.daysInMonth());
-      //  System.out.println(months.lastDayOfActualMonth());
+        //  System.out.println(months.lastDayOfActualMonth());
         System.out.println(months.numberOfDaysToTheFirstMondayInActualMonth());
 
 
