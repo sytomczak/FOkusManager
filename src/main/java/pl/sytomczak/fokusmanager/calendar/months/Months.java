@@ -1,17 +1,19 @@
 package pl.sytomczak.fokusmanager.calendar.months;
 
+import java.time.DayOfWeek;
+import java.time.LocalDate;
 import java.time.YearMonth;
 
+import static java.time.temporal.TemporalAdjusters.firstInMonth;
 
 public class Months {
 
 
     private ActualMonth actualMonth = new ActualMonth();
+    int year = YearMonth.now().getYear();
+    int month = YearMonth.now().getMonthValue();
 
     private YearMonth yearMonthObject() {
-        int year = YearMonth.now().getYear();
-        int month = YearMonth.now().getMonthValue();
-
         YearMonth yearMonthObject = YearMonth.of(year, month);
         return yearMonthObject;
     }
@@ -21,15 +23,29 @@ public class Months {
         return daysInMonth;
     }
 
-    public String firstDayOfMonth() {
-        String firstDay = yearMonthObject().atDay(1).getDayOfWeek().name();
-        return firstDay;
-    }
-    public String lastDayOfActualMonth() {
-        String lastDay = yearMonthObject().atEndOfMonth().getDayOfWeek().name();
-        return lastDay;
+//        public String firstDayOfMonth() {
+//            String firstDay = yearMonthObject().atDay(1).getDayOfWeek().name();
+//            return firstDay;
+//        }
+//        public String lastDayOfActualMonth() {
+//            String lastDay = yearMonthObject().atEndOfMonth().getDayOfWeek().name();
+//            return lastDay;
+//        }
+
+    public int numberOfDaysToTheFirstMondayInActualMonth() {
+        LocalDate now = LocalDate.now();
+        LocalDate firstMonday = now.with(firstInMonth(DayOfWeek.MONDAY));
+
+        int days = 0;
+        for (int i = 1; i <= daysInMonth(); i++) {
+            LocalDate date = LocalDate.of(year, month, i);
+            days++;
+            if (date.equals(firstMonday)) {
+                return days;
+            }
+        }
+        return days;
     }
 }
-
 
 
