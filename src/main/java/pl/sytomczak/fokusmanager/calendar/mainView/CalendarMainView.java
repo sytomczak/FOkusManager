@@ -84,6 +84,7 @@ public class CalendarMainView extends JFrame {
         int addSpace3 = 0;
         int addSpace4 = 0;
 
+
         for (int i = 0; i <= months.daysInMonth(); i++) {
 
 
@@ -96,7 +97,16 @@ public class CalendarMainView extends JFrame {
                 String name = day.name();
                 Integer nr = day.getValue();
              */
-            if (i <= 6){
+
+//            do{
+//                months.firstDayOfMonth() + 1
+//            }while(months.firstDayOfMonth() != "MONDAY");
+            if (i <= 6) {
+//                do{
+//                    dayButton.setLocation(360 - addSpace, 50);
+//                    addSpace = addSpace + 80;
+//                }while(months.firstMondayInActualMonths() != );
+//
                 dayButton.setLocation(60 + addSpace, 50);
                 addSpace = addSpace + 80;
 
@@ -129,5 +139,14 @@ public class CalendarMainView extends JFrame {
         calendarMainView.setLocationRelativeTo(null);
 
         Connection connection = DBConnection.getConnection();
+
+        Months months = new Months();
+      //  System.out.println(months.firstDayOfMonth());
+        System.out.println(months.daysInMonth());
+      //  System.out.println(months.lastDayOfActualMonth());
+        System.out.println(months.numberOfDaysToTheFirstMondayInActualMonth());
+
+
     }
 }
+
