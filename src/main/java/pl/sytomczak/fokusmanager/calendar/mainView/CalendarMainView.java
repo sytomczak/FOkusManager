@@ -35,7 +35,7 @@ public class CalendarMainView extends JFrame {
     private ActualYear actualYear = new ActualYear();
 
 
-    public CalendarMainView() throws Exception {
+    public CalendarMainView(){
         setContentPane(mainJPanel);
         setTitle("FocusManager");
 
@@ -60,6 +60,18 @@ public class CalendarMainView extends JFrame {
             }
         });
 
+        dayButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                NotesView notesView = new NotesView();
+                notesView.pack();
+                notesView.setResizable(false);
+                notesView.setVisible(true);
+                notesView.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+                notesView.setLocationRelativeTo(null);
+            }
+        });
+
         Clock.runClock(clockPanel);
 
         ActualMonth.setActualMonth(monthPanel);
@@ -67,17 +79,33 @@ public class CalendarMainView extends JFrame {
         ActualYear.getActualYear(yearsPanel);
 
         controlsInActualMonth();
+
+
+
     }
 
-    public void createControls() {
+    private void createControls() {
         dayButton = new JButton();
+        dayButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                NotesView notesView = new NotesView();
+                notesView.pack();
+                notesView.setResizable(false);
+                notesView.setVisible(true);
+                notesView.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+                notesView.setLocationRelativeTo(null);
+            }
+        });
         dayButton.setBackground(Color.yellow);
         calendarJPanel.setLayout(null);
         dayButton.setSize(80, 80);
         calendarJPanel.add(dayButton);
+
+
     }
 
-    private void controlsInActualMonth() {
+    public void controlsInActualMonth() {
 
         int numberOfDaysEarlierInFirstMonday = months.numberOfDaysToTheFirstMondayInActualMonth() - 1;
         int addSpace = 0;
@@ -87,9 +115,7 @@ public class CalendarMainView extends JFrame {
         int addSpace4 = 0;
         int addSpace5 = 0;
 
-
-
-        for (int i = 0; i <= months.daysInMonth() -1; i++) {
+        for (int i = 0; i <= months.daysInMonth() - 1; i++) {
 
             createControls();
             dayButton.setText(String.valueOf(i + 1));
@@ -114,7 +140,7 @@ public class CalendarMainView extends JFrame {
                 dayButton.setLocation(170 + addSpace4, 390);
                 addSpace4 = addSpace4 + 110;
 
-            } else if(i > 27 + numberOfDaysEarlierInFirstMonday && i <= months.daysInMonth() -1){
+            } else if (i > 27 + numberOfDaysEarlierInFirstMonday && i <= months.daysInMonth() - 1) {
                 dayButton.setLocation(170 + addSpace5, 480);
                 addSpace5 = addSpace5 + 110;
             }
@@ -138,9 +164,7 @@ public class CalendarMainView extends JFrame {
         Connection connection = DBConnection.getConnection();
 
         Months months = new Months();
-        //  System.out.println(months.firstDayOfMonth());
         System.out.println(months.daysInMonth());
-        //  System.out.println(months.lastDayOfActualMonth());
         System.out.println(months.numberOfDaysToTheFirstMondayInActualMonth());
 
 
