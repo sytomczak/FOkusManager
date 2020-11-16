@@ -23,15 +23,6 @@ public class Months {
         return daysInMonth;
     }
 
-//        public String firstDayOfMonth() {
-//            String firstDay = yearMonthObject().atDay(1).getDayOfWeek().name();
-//            return firstDay;
-//        }
-//        public String lastDayOfActualMonth() {
-//            String lastDay = yearMonthObject().atEndOfMonth().getDayOfWeek().name();
-//            return lastDay;
-//        }
-
     public int numberOfDaysToTheFirstMondayInActualMonth() {
         LocalDate now = LocalDate.now();
         LocalDate firstMonday = now.with(firstInMonth(DayOfWeek.MONDAY));
