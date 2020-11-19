@@ -7,7 +7,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import com.jgoodies.forms.layout.CellConstraints;
 
 public class NotesView extends JFrame {
     private JPanel notesJPanel;
@@ -27,29 +26,6 @@ public class NotesView extends JFrame {
 
     public NotesView() {
 
-        //GridLayout gl = new GridLayout(5, 5);
-        //CellConstraints cc = new CellConstraints();
-
-
-        //notesJPanel.remove(notesAreaScrollPanel);
-         //add(new JTextArea(), cc.rchw(0,0,3,1));
-        //notesJPanel.add(notesAreaScrollPanel);
-        /*JButton goldSeat;
-        JButton silverSeat;
-        JButton bronzeSeat;
-        for(int i = 0; i < 5; i++)
-            for(int j = 0; j < 5; j++)
-            {
-                goldSeat = new JButton();
-                goldSeat.setSize(100,25);
-                silverSeat = new JButton();
-                silverSeat.setSize(100,25);
-                bronzeSeat = new JButton();
-                bronzeSeat.setSize(100,25);
-                add(new JButton());
-            }*/
-        //this.add(notesJPanel);
-
 
         setSize(510, 450);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -59,10 +35,7 @@ public class NotesView extends JFrame {
         setTitle("Notes");
         setContentPane(notesJPanel);
         InitializeButtons();
-
-        //JScrollPane scrollPane = new JScrollPane(notesArea);//, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-        //scrollPane.setBounds(20,20,500,400);
-        //scrollPane.getViewport().setBackground(Color.WHITE);
+        ;
 
 
         notesOperationsWithDatabase = new NotesOperationsWithDatabase(titleField, notesArea, notesJPanel);
@@ -114,6 +87,7 @@ public class NotesView extends JFrame {
             }
         });
     }
+
     public static void main(String[] args) {
         NotesView notesView = new NotesView();
         notesView.setVisible(true);
