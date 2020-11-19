@@ -24,7 +24,7 @@ public class CalendarMainView extends JFrame {
     private JRadioButton yearsRadioButton;
     private JRadioButton newNotesRadioButton;
     private JPanel legendJPanel;
-    private JTextField legendTextField;
+    private JTextField legendTitle;
     private JEditorPane clockPanel;
     private JEditorPane monthPanel;
     private JRadioButton legendBottom;
@@ -72,17 +72,34 @@ public class CalendarMainView extends JFrame {
             }
         });
 
+        yearsRadioButton.setSize(20,20);
+        yearsRadioButton.setLocation(1080, 580);
+
+        legendBottom.setSize(20,20);
+        legendBottom.setLocation(280, 980);
+
+        newNotesRadioButton.setSize(20,20);
+        newNotesRadioButton.setLocation(1080, 0);
+
+        calendarTitle.setSize(65,25);
+        calendarTitle.setLocation(0,0);
+
+        legendTitle.setSize(60,30);
+        legendTitle.setLocation(0,0);
+
         Clock.runClock(clockPanel);
+        clockPanel.setSize(100,30);
+        clockPanel.setLocation(0,570);
 
         ActualMonth.setActualMonth(monthPanel);
+        monthPanel.setSize(130, 30);
+        monthPanel.setLocation(960,0);
 
         ActualYear.getActualYear(yearsPanel);
+        yearsPanel.setSize(50,30);
+        yearsPanel.setLocation(1000,570);
 
         controlsInActualMonth();
-
-           JEditorPane listopad = (JEditorPane) calendarJPanel.getComponent(3);
-           listopad.setSize(130, 30);
-
 
     }
 
