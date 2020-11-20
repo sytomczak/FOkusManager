@@ -4,6 +4,7 @@ import pl.sytomczak.fokusmanager.calendar.Clock;
 import pl.sytomczak.fokusmanager.calendar.months.ActualMonth;
 import pl.sytomczak.fokusmanager.calendar.months.Months;
 import pl.sytomczak.fokusmanager.calendar.years.ActualYear;
+import pl.sytomczak.fokusmanager.calendar.years.Years;
 import pl.sytomczak.fokusmanager.dbutils.DBConnection;
 import pl.sytomczak.fokusmanager.notes.notesview.NotesView;
 
@@ -13,6 +14,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.sql.Connection;
+
 
 
 public class CalendarMainView extends JFrame {
@@ -181,9 +183,12 @@ public class CalendarMainView extends JFrame {
         Connection connection = DBConnection.getConnection();
 
         Months months = new Months();
-        System.out.println(months.daysInMonth());
-        System.out.println(months.numberOfDaysToTheFirstMondayInActualMonth());
+        System.out.println(months.getPreviousMonth());
+        System.out.println(months.getLaterMonth());
 
+        Years year = new Years();
+        System.out.println(year.getLaterYear2());
+        System.out.println(year.getPreviousYear2());
 
     }
 

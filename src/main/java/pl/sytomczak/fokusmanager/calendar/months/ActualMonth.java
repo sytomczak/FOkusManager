@@ -9,15 +9,12 @@ public class ActualMonth {
 
     public String getActualMonth() {
         Calendar cal = Calendar.getInstance();
-        return new SimpleDateFormat("MMMMMMMMMMM").format(cal.getTime());
+        return new SimpleDateFormat("MMMMM").format(cal.getTime());
 
     }
 
     public static void setActualMonth(JEditorPane monthPanel) {
         ActualMonth choseGetActualMonthMethod = new ActualMonth();
         monthPanel.setText(choseGetActualMonthMethod.getActualMonth().toUpperCase());
-
     }
-
-
 }
