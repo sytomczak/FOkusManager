@@ -5,6 +5,8 @@ import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.YearMonth;
 import java.time.format.DateTimeFormatter;
+import java.util.Calendar;
+import java.util.Locale;
 
 import static java.time.temporal.TemporalAdjusters.firstInMonth;
 
@@ -44,16 +46,15 @@ public class Months {
     public String getPreviousMonth() {
         YearMonth lastMonth = thisMonth.minusMonths(1);
 
-        DateTimeFormatter monthYearFormatter = DateTimeFormatter.ofPattern("MMMM");
+        DateTimeFormatter monthYearFormatter = DateTimeFormatter.ofPattern("MMMM").withLocale(Locale.ENGLISH);
 
         return lastMonth.format(monthYearFormatter);
-
     }
 
     public String getLaterMonth() {
         YearMonth laterMonth = thisMonth.plusMonths(1);
 
-        DateTimeFormatter monthYearFormatter = DateTimeFormatter.ofPattern("MMMM");
+        DateTimeFormatter monthYearFormatter = DateTimeFormatter.ofPattern("MMMM").withLocale(Locale.ENGLISH);
 
         return laterMonth.format(monthYearFormatter);
     }
