@@ -1,10 +1,13 @@
 package pl.sytomczak.fokusmanager.calendar.mainView;
 
+import com.mindfusion.common.Size;
 import pl.sytomczak.fokusmanager.calendar.Clock;
 import pl.sytomczak.fokusmanager.calendar.months.ActualMonth;
 import pl.sytomczak.fokusmanager.calendar.months.Months;
 import pl.sytomczak.fokusmanager.calendar.years.ActualYear;
+import pl.sytomczak.fokusmanager.calendar.years.Years;
 import pl.sytomczak.fokusmanager.dbutils.DBConnection;
+import pl.sytomczak.fokusmanager.notes.daynotesview.DayNotesView;
 import pl.sytomczak.fokusmanager.notes.notesview.NotesView;
 
 import javax.swing.*;
@@ -13,6 +16,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.sql.Connection;
+
 
 
 public class CalendarMainView extends JFrame {
@@ -30,7 +34,7 @@ public class CalendarMainView extends JFrame {
     private JRadioButton legendBottom;
     private JEditorPane yearsPanel;
 
-    private JButton dayButton = new JButton();
+    public JButton dayButton = new JButton();
     private Months months = new Months();
     private ActualYear actualYear = new ActualYear();
 
@@ -48,19 +52,6 @@ public class CalendarMainView extends JFrame {
 
 
         newNotesRadioButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                NotesView notesView = new NotesView();
-                notesView.pack();
-                notesView.setResizable(false);
-                notesView.setVisible(true);
-                notesView.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-                notesView.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-                notesView.setLocationRelativeTo(null);
-            }
-        });
-
-        dayButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 NotesView notesView = new NotesView();
@@ -108,21 +99,22 @@ public class CalendarMainView extends JFrame {
         dayButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                NotesView notesView = new NotesView();
-                notesView.pack();
-                notesView.setResizable(false);
-                notesView.setVisible(true);
-                notesView.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-                notesView.setLocationRelativeTo(null);
+                DayNotesView dayNotesView = new DayNotesView();
+                dayNotesView.pack();
+                dayNotesView.setResizable(false);
+                dayNotesView.setVisible(true);
+                dayNotesView.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+                dayNotesView.setLocationRelativeTo(null);
             }
         });
         dayButton.setBackground(Color.yellow);
         calendarJPanel.setLayout(null);
         dayButton.setSize(80, 80);
         calendarJPanel.add(dayButton);
+        //ustawienie wielkosci czcionki dni
     }
 
-    public void controlsInActualMonth() {
+    public int controlsInActualMonth() {
 
         int numberOfDaysEarlierInFirstMonday = months.numberOfDaysToTheFirstMondayInActualMonth() - 1;
         int addSpace = 0;
@@ -164,6 +156,7 @@ public class CalendarMainView extends JFrame {
 
             i = i++;
         }
+        return months.daysInMonth();
     }
 
     private void onCancel() {
@@ -181,9 +174,12 @@ public class CalendarMainView extends JFrame {
         Connection connection = DBConnection.getConnection();
 
         Months months = new Months();
-        System.out.println(months.daysInMonth());
-        System.out.println(months.numberOfDaysToTheFirstMondayInActualMonth());
+        System.out.println(months.getPreviousMonth());
+        System.out.println(months.getLaterMonth());
 
+        Years year = new Years();
+        System.out.println(year.getLaterYear2());
+        System.out.println(year.getPreviousYear2());
 
     }
 

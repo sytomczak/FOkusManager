@@ -35,7 +35,6 @@ public class NotesView extends JFrame {
         setTitle("Notes");
         setContentPane(notesJPanel);
         InitializeButtons();
-        ;
 
 
         notesOperationsWithDatabase = new NotesOperationsWithDatabase(titleField, notesArea, notesJPanel);
