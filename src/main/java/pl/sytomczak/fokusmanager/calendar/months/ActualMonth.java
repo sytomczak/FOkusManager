@@ -17,9 +17,6 @@ public class ActualMonth {
     }
 
     public static void setActualMonth(JEditorPane monthPanel) {
-//        ActualMonth choseGetActualMonthMethod = new ActualMonth();
-//        monthPanel.setText(choseGetActualMonthMethod.getActualMonth()..toUpperCase()));
-
         YearMonth thisMonth = YearMonth.now();
         DateTimeFormatter monthYearFormatter = DateTimeFormatter.ofPattern("MMMM").withLocale(Locale.ENGLISH);
         monthPanel.setText(thisMonth.format(monthYearFormatter));

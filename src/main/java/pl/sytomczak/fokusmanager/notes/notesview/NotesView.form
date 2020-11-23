@@ -88,7 +88,9 @@
             <properties>
               <autoscrolls value="true"/>
               <background color="-1441874"/>
+              <lineWrap value="true"/>
               <minimumSize width="400" height="350"/>
+              <wrapStyleWord value="true"/>
             </properties>
           </component>
         </children>
