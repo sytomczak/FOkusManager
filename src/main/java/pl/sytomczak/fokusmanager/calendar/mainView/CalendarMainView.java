@@ -111,7 +111,6 @@ public class CalendarMainView extends JFrame {
         calendarJPanel.setLayout(null);
         dayButton.setSize(80, 80);
         calendarJPanel.add(dayButton);
-        //ustawienie wielkosci czcionki dni
     }
 
     public int controlsInActualMonth() {
