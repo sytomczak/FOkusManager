@@ -21,6 +21,9 @@ public class NotesView extends JFrame {
     private JButton searchButton;
     private JTextField titleField;
     private JTextArea notesArea;
+    private JButton addCategoryButton;
+    private JButton selectCategoryButton;
+    private JButton selectColorButton;
 
     NotesOperationsWithDatabase notesOperationsWithDatabase;
 

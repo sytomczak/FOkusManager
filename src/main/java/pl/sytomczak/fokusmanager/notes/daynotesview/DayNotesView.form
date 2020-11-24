@@ -42,6 +42,7 @@
               <editable value="false"/>
               <font size="36" style="1"/>
               <foreground color="-16777216"/>
+              <horizontalAlignment value="0"/>
             </properties>
           </component>
         </children>
@@ -75,7 +76,10 @@
                 <constraints/>
                 <properties>
                   <background color="-1441874"/>
+                  <font name="Times New Roman" size="20"/>
                   <lineWrap value="true"/>
+                  <text value=""/>
+                  <toolTipText value=""/>
                   <wrapStyleWord value="true"/>
                 </properties>
               </component>
@@ -83,7 +87,7 @@
           </scrollpane>
         </children>
       </grid>
-      <grid id="e168" binding="settingsJPanel" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+      <grid id="e168" binding="settingsJPanel" layout-manager="GridLayoutManager" row-count="3" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
         <margin top="0" left="0" bottom="0" right="0"/>
         <constraints>
           <grid row="0" column="2" row-span="2" col-span="1" vsize-policy="3" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="true">
@@ -96,9 +100,34 @@
           <background color="-8129971"/>
         </properties>
         <border type="none"/>
-        <children/>
+        <children>
+          <component id="ac72" class="javax.swing.JButton" binding="selectCategoryButton">
+            <constraints>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <text value="Select Category"/>
+            </properties>
+          </component>
+          <component id="4d6a8" class="javax.swing.JButton" binding="selectColorButton">
+            <constraints>
+              <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <text value="Select Color"/>
+            </properties>
+          </component>
+          <component id="f3881" class="javax.swing.JButton" binding="addCategoryButton" default-binding="true">
+            <constraints>
+              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <text value="Add Category"/>
+            </properties>
+          </component>
+        </children>
       </grid>
-      <grid id="24b2b" binding="optionJPanel" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+      <grid id="24b2b" binding="optionJPanel" layout-manager="GridLayoutManager" row-count="3" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
         <margin top="0" left="0" bottom="0" right="0"/>
         <constraints>
           <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="9" fill="0" indent="0" use-parent-layout="false">
@@ -114,7 +143,7 @@
         <children>
           <component id="edf48" class="javax.swing.JButton" binding="saveButton">
             <constraints>
-              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false">
+              <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false">
                 <minimum-size width="100" height="20"/>
                 <preferred-size width="100" height="20"/>
                 <maximum-size width="100" height="20"/>
@@ -124,6 +153,20 @@
               <text value="Save"/>
             </properties>
           </component>
+          <hspacer id="3d80c">
+            <constraints>
+              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+            </constraints>
+          </hspacer>
+          <grid id="68ed8" binding="dateJPanel" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+            <margin top="0" left="0" bottom="0" right="0"/>
+            <constraints>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties/>
+            <border type="none"/>
+            <children/>
+          </grid>
         </children>
       </grid>
     </children>

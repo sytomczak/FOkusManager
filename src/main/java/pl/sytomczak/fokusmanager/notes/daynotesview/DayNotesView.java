@@ -19,11 +19,15 @@ public class DayNotesView extends JFrame {
     private JPanel optionJPanel;
     private JTextField dayTextField;
     private JButton saveButton;
+    private JButton selectCategoryButton;
+    private JButton selectColorButton;
+    private JButton addCategoryButton;
+    private JPanel dateJPanel;
 
     NotesOperationsWithDatabase notesOperationsWithDatabase;
     NotesView notesView = new NotesView();
 
-    
+
 
     //po otwarciu dnia automatyczny odczyt i zapisuje tytul jako numer dnia
 
@@ -69,3 +73,6 @@ public class DayNotesView extends JFrame {
     }
 
 }
+
+
+//Created new buttons in DayNotesView and NotesView. Center text in dayTextField. Set font in DayNotesView and NotesView. Started created dateJPanel in DayNotesView.
