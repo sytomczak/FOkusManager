@@ -37,6 +37,7 @@ public class CalendarMainView extends JFrame {
     public JButton dayButton = new JButton();
     private Months months = new Months();
     private ActualYear actualYear = new ActualYear();
+    public String DayName;
 
 
     public CalendarMainView() {
@@ -99,7 +100,7 @@ public class CalendarMainView extends JFrame {
         dayButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                DayNotesView dayNotesView = new DayNotesView();
+                DayNotesView dayNotesView = new DayNotesView(DayName);
                 dayNotesView.pack();
                 dayNotesView.setResizable(false);
                 dayNotesView.setVisible(true);
@@ -127,6 +128,12 @@ public class CalendarMainView extends JFrame {
 
             createControls();
             dayButton.setText(String.valueOf(i + 1));
+            dayButton.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    DayName = ((JButton)e.getSource()).getText();
+                }
+            });
 
             if (i < numberOfDaysEarlierInFirstMonday) {
                 dayButton.setLocation(170 + (880 - (months.numberOfDaysToTheFirstMondayInActualMonth() * 110)) + addSpace, 30);
