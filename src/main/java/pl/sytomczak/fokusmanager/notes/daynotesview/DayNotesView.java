@@ -23,14 +23,12 @@ public class DayNotesView extends JFrame {
     private JButton selectColorButton;
     private JButton addCategoryButton;
     private JPanel dateJPanel;
+    private JButton photoButton;
 
     NotesOperationsWithDatabase notesOperationsWithDatabase;
     NotesView notesView = new NotesView();
     CalendarMainView calendarMainView = new CalendarMainView();
 
-
-
-    //po otwarciu dnia automatyczny odczyt i zapisuje tytul jako numer dnia
 
     public DayNotesView() {
         Initialize();
@@ -42,7 +40,7 @@ public class DayNotesView extends JFrame {
     }
 
     private void Initialize(){
-        setSize(510, 450);
+        setSize(540, 480);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(null);
         setLocationRelativeTo(null);

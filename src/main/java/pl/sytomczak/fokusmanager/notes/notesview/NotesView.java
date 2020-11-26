@@ -24,13 +24,14 @@ public class NotesView extends JFrame {
     private JButton addCategoryButton;
     private JButton selectCategoryButton;
     private JButton selectColorButton;
+    private JButton photoButton;
 
     NotesOperationsWithDatabase notesOperationsWithDatabase;
 
     public NotesView() {
 
 
-        setSize(510, 450);
+        setSize(540, 480);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(null);
         setLocationRelativeTo(null);
