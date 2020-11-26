@@ -23,17 +23,24 @@ public class DayNotesView extends JFrame {
     private JButton selectColorButton;
     private JButton addCategoryButton;
     private JPanel dateJPanel;
+    private JButton photoButton;
 
     NotesOperationsWithDatabase notesOperationsWithDatabase;
     NotesView notesView = new NotesView();
+    CalendarMainView calendarMainView = new CalendarMainView();
 
-
-
-    //po otwarciu dnia automatyczny odczyt i zapisuje tytul jako numer dnia
 
     public DayNotesView() {
+        Initialize();
+    }
 
-        setSize(510, 450);
+    public DayNotesView(String dayName) {
+        Initialize();
+        dayTextField.setText(dayName);
+    }
+
+    private void Initialize(){
+        setSize(540, 480);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(null);
         setLocationRelativeTo(null);
@@ -42,7 +49,6 @@ public class DayNotesView extends JFrame {
         setContentPane(dayNotesJPanel);
 
         InitializeButtons();
-        dayTextField.setText(dayNumber());
 
         notesOperationsWithDatabase = new NotesOperationsWithDatabase(dayTextField, noteTextArea, dayNotesJPanel);
     }
@@ -60,12 +66,6 @@ public class DayNotesView extends JFrame {
             });
     }
 
-    public String dayNumber() {
-        CalendarMainView calendarMainView = new CalendarMainView();
-        return calendarMainView.dayButton.getText();
- //pobieranie numeru kliknietego dnia
-        }
-
 
     public static void main(String[] args) {
         DayNotesView dayNotesView = new DayNotesView();
@@ -75,4 +75,3 @@ public class DayNotesView extends JFrame {
 }
 
 
-//Created new buttons in DayNotesView and NotesView. Center text in dayTextField. Set font in DayNotesView and NotesView. Started created dateJPanel in DayNotesView.
