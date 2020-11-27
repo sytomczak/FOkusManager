@@ -25,9 +25,6 @@ public class DayNotesView extends JFrame {
     private JPanel dateJPanel;
     private JButton photoButton;
 
-
-    public Boolean pressedButton= false;
-
     NotesOperationsWithDatabase notesOperationsWithDatabase;
     NotesView notesView = new NotesView();
     CalendarMainView calendarMainView = new CalendarMainView();
@@ -54,8 +51,7 @@ public class DayNotesView extends JFrame {
 
         notesOperationsWithDatabase = new NotesOperationsWithDatabase(dayTextField, noteTextArea, dayNotesJPanel);
 
-    //    notesView.SetIconsInPhotoButton();
-
+        notesView.SetIconsInPhotoButton(photoButton);
 
     }
 
