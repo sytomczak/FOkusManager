@@ -25,6 +25,9 @@ public class NotesView extends JFrame {
     private JButton selectCategoryButton;
     private JButton selectColorButton;
     private JButton photoButton;
+    private String patchToYellowImage = "/g2.png";
+    private String patchToGreenImage = "/gg1.png";
+    private Boolean pressedButton= false;
 
     NotesOperationsWithDatabase notesOperationsWithDatabase;
 
@@ -36,12 +39,30 @@ public class NotesView extends JFrame {
         setLayout(null);
         setLocationRelativeTo(null);
         setResizable(false);
-        setTitle("Notes");
+        setTitle("Notess");
         setContentPane(notesJPanel);
+
         InitializeButtons();
 
-
         notesOperationsWithDatabase = new NotesOperationsWithDatabase(titleField, notesArea, notesJPanel);
+
+        SetIconsInPhotoButton(photoButton);
+    }
+
+    public void SetIconsInPhotoButton(JButton btn) {
+        btn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (pressedButton == false) {
+                    btn.setIcon(new ImageIcon(getClass().getResource(patchToYellowImage)));
+                    pressedButton = true;
+                } else if (pressedButton == true) {
+                    btn.setIcon(new ImageIcon(getClass().getResource(patchToGreenImage)));
+                    pressedButton = false;
+
+                }
+            }
+        });
     }
 
     private void InitializeButtons() {

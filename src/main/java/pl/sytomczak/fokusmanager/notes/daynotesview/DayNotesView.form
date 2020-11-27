@@ -181,6 +181,8 @@
           </grid>
         </constraints>
         <properties>
+          <enabled value="true"/>
+          <hideActionText value="true"/>
           <icon value="gg1.png"/>
           <text value=""/>
         </properties>
