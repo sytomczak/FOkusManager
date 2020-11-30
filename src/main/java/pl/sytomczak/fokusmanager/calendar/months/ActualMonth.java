@@ -10,11 +10,11 @@ import java.util.Locale;
 
 public class ActualMonth {
 
-    public String getActualMonth() {
-        Calendar cal = Calendar.getInstance();
-        return new SimpleDateFormat("MMMM").format(cal.getTime());
-
-    }
+//    public String getActualMonth() {
+//        Calendar cal = Calendar.getInstance();
+//        return new SimpleDateFormat("MMMM").format(cal.getTime());
+//
+//    }
 
     public static void setActualMonth(JEditorPane monthPanel) {
         YearMonth thisMonth = YearMonth.now();

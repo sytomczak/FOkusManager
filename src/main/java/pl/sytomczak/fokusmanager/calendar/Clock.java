@@ -13,7 +13,7 @@ public class Clock {
                 while (true) {
                     DateFormat calendar = new SimpleDateFormat("HH : mm : ss");
 
-                    String data = calendar.format(new Date()).toString();
+                    String data = calendar.format(new Date());
                     clockJPanel.setText(data);
 
                     try {
