@@ -32,14 +32,12 @@ public class NotesView extends JFrame {
     NotesOperationsWithDatabase notesOperationsWithDatabase;
 
     public NotesView() {
-
-
         setSize(540, 480);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(null);
         setLocationRelativeTo(null);
         setResizable(false);
-        setTitle("Notess");
+        setTitle("Notes");
         setContentPane(notesJPanel);
 
         InitializeButtons();
