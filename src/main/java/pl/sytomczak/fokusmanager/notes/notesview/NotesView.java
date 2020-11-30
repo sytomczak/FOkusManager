@@ -27,7 +27,7 @@ public class NotesView extends JFrame {
     private JButton photoButton;
     private String patchToYellowImage = "/g2.png";
     private String patchToGreenImage = "/gg1.png";
-    private Boolean pressedButton= false;
+    private Boolean pressedButton = false;
 
     NotesOperationsWithDatabase notesOperationsWithDatabase;
 
