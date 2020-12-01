@@ -1,15 +1,13 @@
 package pl.sytomczak.fokusmanager.notes.daynotesview;
 
 import pl.sytomczak.fokusmanager.calendar.Date;
-import pl.sytomczak.fokusmanager.calendar.mainView.CalendarMainView;
+import pl.sytomczak.fokusmanager.calendar.gui.CalendarMainView;
 import pl.sytomczak.fokusmanager.notes.NotesOperationsWithDatabase;
 import pl.sytomczak.fokusmanager.notes.notesview.NotesView;
-import sun.util.calendar.BaseCalendar;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.text.DateFormat;
 
 public class DayNotesView extends JFrame {
 

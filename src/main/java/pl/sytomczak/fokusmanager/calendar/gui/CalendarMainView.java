@@ -1,7 +1,5 @@
-package pl.sytomczak.fokusmanager.calendar.mainView;
+package pl.sytomczak.fokusmanager.calendar;
 
-import com.mindfusion.common.Size;
-import pl.sytomczak.fokusmanager.calendar.Clock;
 import pl.sytomczak.fokusmanager.calendar.months.ActualMonth;
 import pl.sytomczak.fokusmanager.calendar.months.Months;
 import pl.sytomczak.fokusmanager.calendar.years.ActualYear;
@@ -15,10 +13,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
-import java.awt.event.WindowEvent;
 import java.sql.Connection;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 
 public class CalendarMainView extends JFrame {
