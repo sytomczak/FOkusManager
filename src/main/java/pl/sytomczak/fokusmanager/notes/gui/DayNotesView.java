@@ -39,7 +39,7 @@ public class DayNotesView extends JFrame {
     }
 
     private void Initialize() {
-        setSize(455, 480);
+        setSize(455, 460);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(null);
         setLocationRelativeTo(null);

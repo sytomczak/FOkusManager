@@ -6,6 +6,8 @@ import pl.sytomczak.fokusmanager.notes.NotesOperationsWithDatabase;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class NotesView extends JFrame {
     private JPanel notesJPanel;
@@ -43,6 +45,13 @@ public class NotesView extends JFrame {
         notesOperationsWithDatabase = new NotesOperationsWithDatabase(titleField, notesArea, notesJPanel);
 
         SetIconsInPhotoButton(photoButton);
+
+        titleField.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                titleField.setText("");
+            }
+        });
     }
 
     public void SetIconsInPhotoButton(JButton btn) {
