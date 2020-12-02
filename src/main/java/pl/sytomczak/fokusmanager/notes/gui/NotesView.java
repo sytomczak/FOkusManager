@@ -1,10 +1,9 @@
-package pl.sytomczak.fokusmanager.notes.notesview;
+package pl.sytomczak.fokusmanager.notes.gui;
 
 
 import pl.sytomczak.fokusmanager.notes.NotesOperationsWithDatabase;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -22,9 +21,8 @@ public class NotesView extends JFrame {
     private JTextField titleField;
     private JTextArea notesArea;
     private JButton addCategoryButton;
-    private JButton selectCategoryButton;
-    private JButton selectColorButton;
     private JButton photoButton;
+    private JButton deleteButton;
     private String patchToYellowImage = "/g2.png";
     private String patchToGreenImage = "/gg1.png";
     private Boolean pressedButton = false;

@@ -1,2 +1,4 @@
-package pl.sytomczak.fokusmanager.legend;public class SaveNotesLegendView {
+package pl.sytomczak.fokusmanager.legend;
+
+public class SameCategoryNotesLegendView {
 }

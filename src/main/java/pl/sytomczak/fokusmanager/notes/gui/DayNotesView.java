@@ -1,9 +1,8 @@
-package pl.sytomczak.fokusmanager.notes.daynotesview;
+package pl.sytomczak.fokusmanager.notes.gui;
 
 import pl.sytomczak.fokusmanager.calendar.Date;
 import pl.sytomczak.fokusmanager.calendar.gui.CalendarMainView;
 import pl.sytomczak.fokusmanager.notes.NotesOperationsWithDatabase;
-import pl.sytomczak.fokusmanager.notes.notesview.NotesView;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -20,12 +19,11 @@ public class DayNotesView extends JFrame {
     private JPanel optionJPanel;
     private JTextField dayTextField;
     private JButton saveButton;
-    private JButton selectCategoryButton;
-    private JButton selectColorButton;
     private JButton addCategoryButton;
     private JPanel dateJPanel;
     private JButton photoButton;
     private JEditorPane dateEditorPane;
+    private JButton deleteButton;
 
     NotesOperationsWithDatabase notesOperationsWithDatabase;
     NotesView notesView = new NotesView();
@@ -41,7 +39,7 @@ public class DayNotesView extends JFrame {
     }
 
     private void Initialize() {
-        setSize(540, 480);
+        setSize(455, 480);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(null);
         setLocationRelativeTo(null);

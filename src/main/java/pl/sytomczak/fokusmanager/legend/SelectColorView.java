@@ -1,2 +1,4 @@
-package pl.sytomczak.fokusmanager.legend;public class SelectColorView {
+package pl.sytomczak.fokusmanager.legend;
+
+public class SelectColorView {
 }

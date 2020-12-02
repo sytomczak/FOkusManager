@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="pl.sytomczak.fokusmanager.notes.daynotesview.DayNotesView">
-  <grid id="27dc6" binding="dayNotesJPanel" layout-manager="GridLayoutManager" row-count="3" column-count="4" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="pl.sytomczak.fokusmanager.notes.gui.DayNotesView">
+  <grid id="27dc6" binding="dayNotesJPanel" layout-manager="GridLayoutManager" row-count="4" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
     <margin top="0" left="0" bottom="0" right="0"/>
     <constraints>
       <xy x="20" y="20" width="540" height="522"/>
@@ -16,7 +16,7 @@
       <grid id="8a6c9" binding="dayJPanel" layout-manager="GridLayoutManager" row-count="1" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
         <margin top="0" left="0" bottom="0" right="0"/>
         <constraints>
-          <grid row="0" column="0" row-span="2" col-span="1" vsize-policy="3" hsize-policy="3" anchor="9" fill="0" indent="0" use-parent-layout="false">
+          <grid row="0" column="0" row-span="3" col-span="1" vsize-policy="3" hsize-policy="3" anchor="9" fill="0" indent="0" use-parent-layout="false">
             <minimum-size width="150" height="100"/>
             <preferred-size width="150" height="100"/>
             <maximum-size width="150" height="100"/>
@@ -53,7 +53,7 @@
       <grid id="d5eff" binding="noteJPanel" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
         <margin top="0" left="0" bottom="0" right="0"/>
         <constraints>
-          <grid row="2" column="0" row-span="1" col-span="4" vsize-policy="3" hsize-policy="3" anchor="9" fill="0" indent="0" use-parent-layout="false">
+          <grid row="3" column="0" row-span="1" col-span="3" vsize-policy="3" hsize-policy="3" anchor="9" fill="0" indent="0" use-parent-layout="false">
             <minimum-size width="390" height="350"/>
             <preferred-size width="390" height="350"/>
             <maximum-size width="390" height="350"/>
@@ -90,10 +90,10 @@
           </scrollpane>
         </children>
       </grid>
-      <grid id="e168" binding="settingsJPanel" layout-manager="GridLayoutManager" row-count="3" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+      <grid id="e168" binding="settingsJPanel" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
         <margin top="0" left="0" bottom="0" right="0"/>
         <constraints>
-          <grid row="1" column="2" row-span="2" col-span="2" vsize-policy="3" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="true">
+          <grid row="2" column="2" row-span="2" col-span="1" vsize-policy="3" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="true">
             <minimum-size width="130" height="450"/>
             <preferred-size width="130" height="450"/>
             <maximum-size width="130" height="450"/>
@@ -104,36 +104,26 @@
         </properties>
         <border type="none"/>
         <children>
-          <component id="4d6a8" class="javax.swing.JButton" binding="selectColorButton">
+          <component id="150fc" class="javax.swing.JButton" binding="deleteButton">
             <constraints>
-              <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="1" fill="1" indent="0" use-parent-layout="false"/>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                <minimum-size width="20" height="20"/>
+                <preferred-size width="20" height="20"/>
+                <maximum-size width="20" height="20"/>
+              </grid>
             </constraints>
             <properties>
-              <text value="Select Color"/>
-            </properties>
-          </component>
-          <component id="ac72" class="javax.swing.JButton" binding="selectCategoryButton">
-            <constraints>
-              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="2" fill="1" indent="0" use-parent-layout="false"/>
-            </constraints>
-            <properties>
-              <text value="Select Category"/>
-            </properties>
-          </component>
-          <component id="f3881" class="javax.swing.JButton" binding="addCategoryButton" default-binding="true">
-            <constraints>
-              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-            </constraints>
-            <properties>
-              <text value="Add Category"/>
+              <background color="-894145"/>
+              <icon value="x.jpg"/>
+              <text value=""/>
             </properties>
           </component>
         </children>
       </grid>
-      <grid id="24b2b" binding="optionJPanel" layout-manager="GridLayoutManager" row-count="3" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+      <grid id="24b2b" binding="optionJPanel" layout-manager="GridLayoutManager" row-count="3" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
         <margin top="0" left="0" bottom="0" right="0"/>
         <constraints>
-          <grid row="0" column="1" row-span="2" col-span="1" vsize-policy="3" hsize-policy="3" anchor="9" fill="0" indent="0" use-parent-layout="false">
+          <grid row="0" column="1" row-span="3" col-span="1" vsize-policy="3" hsize-policy="3" anchor="9" fill="0" indent="0" use-parent-layout="false">
             <minimum-size width="230" height="100"/>
             <preferred-size width="230" height="100"/>
             <maximum-size width="230" height="100"/>
@@ -147,10 +137,10 @@
         <children>
           <component id="edf48" class="javax.swing.JButton" binding="saveButton">
             <constraints>
-              <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false">
-                <minimum-size width="100" height="20"/>
-                <preferred-size width="100" height="20"/>
-                <maximum-size width="100" height="20"/>
+              <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                <minimum-size width="70" height="20"/>
+                <preferred-size width="70" height="20"/>
+                <maximum-size width="70" height="20"/>
               </grid>
             </constraints>
             <properties>
@@ -159,13 +149,13 @@
           </component>
           <hspacer id="3d80c">
             <constraints>
-              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+              <grid row="1" column="0" row-span="1" col-span="2" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
             </constraints>
           </hspacer>
           <grid id="68ed8" binding="dateJPanel" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
             <margin top="0" left="0" bottom="0" right="0"/>
             <constraints>
-              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+              <grid row="0" column="0" row-span="1" col-span="2" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
               <background color="-8129971"/>
@@ -187,11 +177,23 @@
               </component>
             </children>
           </grid>
+          <component id="f3881" class="javax.swing.JButton" binding="addCategoryButton" default-binding="true">
+            <constraints>
+              <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false">
+                <minimum-size width="120" height="20"/>
+                <preferred-size width="120" height="20"/>
+                <maximum-size width="120" height="20"/>
+              </grid>
+            </constraints>
+            <properties>
+              <text value="Add Category"/>
+            </properties>
+          </component>
         </children>
       </grid>
       <component id="f11ee" class="javax.swing.JButton" binding="photoButton">
         <constraints>
-          <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="4" fill="0" indent="0" use-parent-layout="false">
+          <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false">
             <minimum-size width="50" height="50"/>
             <preferred-size width="50" height="50"/>
             <maximum-size width="50" height="50"/>

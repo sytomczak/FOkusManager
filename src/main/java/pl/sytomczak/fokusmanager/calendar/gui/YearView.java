@@ -1,2 +1,4 @@
-package pl.sytomczak.fokusmanager.calendar.gui;public class YearView {
+package pl.sytomczak.fokusmanager.calendar.gui;
+
+public class YearView {
 }

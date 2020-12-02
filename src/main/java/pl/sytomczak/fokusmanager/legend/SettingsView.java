@@ -1,2 +1,4 @@
-package pl.sytomczak.fokusmanager.legend;public class SettingsView {
+package pl.sytomczak.fokusmanager.legend;
+
+public class SettingsView {
 }

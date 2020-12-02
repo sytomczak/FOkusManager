@@ -1,12 +1,13 @@
-package pl.sytomczak.fokusmanager.calendar;
+package pl.sytomczak.fokusmanager.calendar.gui;
 
+import pl.sytomczak.fokusmanager.calendar.Clock;
 import pl.sytomczak.fokusmanager.calendar.months.ActualMonth;
 import pl.sytomczak.fokusmanager.calendar.months.Months;
 import pl.sytomczak.fokusmanager.calendar.years.ActualYear;
 import pl.sytomczak.fokusmanager.calendar.years.Years;
 import pl.sytomczak.fokusmanager.dbutils.DBConnection;
-import pl.sytomczak.fokusmanager.notes.daynotesview.DayNotesView;
-import pl.sytomczak.fokusmanager.notes.notesview.NotesView;
+import pl.sytomczak.fokusmanager.notes.gui.DayNotesView;
+import pl.sytomczak.fokusmanager.notes.gui.NotesView;
 
 import javax.swing.*;
 import java.awt.*;
