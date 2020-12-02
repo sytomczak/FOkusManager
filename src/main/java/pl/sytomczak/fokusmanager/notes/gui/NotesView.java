@@ -40,11 +40,11 @@ public class NotesView extends JFrame {
         setTitle("Notes");
         setContentPane(notesJPanel);
 
-        InitializeButtons();
+        initializeButtons();
 
         notesOperationsWithDatabase = new NotesOperationsWithDatabase(titleField, notesArea, notesJPanel);
 
-        SetIconsInPhotoButton(photoButton);
+        setIconsInPhotoButton(photoButton);
 
         titleField.addMouseListener(new MouseAdapter() {
             @Override
@@ -54,7 +54,7 @@ public class NotesView extends JFrame {
         });
     }
 
-    public void SetIconsInPhotoButton(JButton btn) {
+    public void setIconsInPhotoButton(JButton btn) {
         btn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -70,7 +70,7 @@ public class NotesView extends JFrame {
         });
     }
 
-    private void InitializeButtons() {
+    private void initializeButtons() {
 
         newNoteButton.addActionListener(new ActionListener() {
             @Override
@@ -81,7 +81,7 @@ public class NotesView extends JFrame {
         saveButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 try {
-                    notesOperationsWithDatabase.Save(false);
+                    notesOperationsWithDatabase.save(false);
                 } catch (Exception exception) {
                     exception.printStackTrace();
                 }
@@ -89,30 +89,37 @@ public class NotesView extends JFrame {
         });
         cutButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                notesOperationsWithDatabase.Cut();
+                notesOperationsWithDatabase.cut();
             }
         });
         copyButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                notesOperationsWithDatabase.Copy();
+                notesOperationsWithDatabase.copy();
             }
         });
         pasteButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                notesOperationsWithDatabase.Paste();
+                notesOperationsWithDatabase.paste();
             }
         });
         selectAllButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
 
-                notesOperationsWithDatabase.SelectAll();
+                notesOperationsWithDatabase.selectAll();
             }
         });
 
 
         searchButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                notesOperationsWithDatabase.Search(notesArea, searchField.getText());
+                notesOperationsWithDatabase.search(notesArea, searchField.getText());
+            }
+        });
+
+        deleteButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                notesOperationsWithDatabase.delete(titleField.getText());
             }
         });
     }

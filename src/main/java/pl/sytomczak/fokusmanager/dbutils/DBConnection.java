@@ -15,7 +15,7 @@ public class DBConnection {
             Class.forName("org.sqlite.JDBC");
             File file = new File("focusManager.sqlite");
             if (!file.exists())
-                CreateDatabase("focusManager.sqlite");
+                createDatabase("focusManager.sqlite");
 
             return DriverManager.getConnection(SQLITECONN);
         } catch (ClassNotFoundException e) {
@@ -27,7 +27,7 @@ public class DBConnection {
         return null;
     }
 
-    private static void CreateDatabase(String fileName) {
+    private static void createDatabase(String fileName) {
         try (Connection conn = DriverManager.getConnection("jdbc:sqlite:" + fileName)) {
             if (conn != null) {
                 Statement statement = conn.createStatement();

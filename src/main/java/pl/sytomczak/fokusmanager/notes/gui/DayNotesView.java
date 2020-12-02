@@ -30,15 +30,15 @@ public class DayNotesView extends JFrame {
     CalendarMainView calendarMainView = new CalendarMainView();
 
     public DayNotesView() {
-        Initialize();
+        initialize();
     }
 
     public DayNotesView(String dayName) {
-        Initialize();
+        initialize();
         dayTextField.setText(dayName);
     }
 
-    private void Initialize() {
+    private void initialize() {
         setSize(455, 460);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(null);
@@ -47,11 +47,11 @@ public class DayNotesView extends JFrame {
         setTitle("Notes");
         setContentPane(dayNotesJPanel);
 
-        InitializeButtons();
+        initializeButtons();
 
         notesOperationsWithDatabase = new NotesOperationsWithDatabase(dayTextField, noteTextArea, dayNotesJPanel);
 
-        notesView.SetIconsInPhotoButton(photoButton);
+        notesView.setIconsInPhotoButton(photoButton);
 
         Date.date(dateEditorPane);
         dateEditorPane.setSize(100,30);
@@ -59,15 +59,22 @@ public class DayNotesView extends JFrame {
 
     }
 
-    private void InitializeButtons() {
+    private void initializeButtons() {
 
         saveButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 try {
-                    notesOperationsWithDatabase.Save(false);
+                    notesOperationsWithDatabase.save(false);
                 } catch (Exception exception) {
                     exception.printStackTrace();
                 }
+            }
+        });
+
+        deleteButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                notesOperationsWithDatabase.delete(dayTextField.getText());
             }
         });
     }

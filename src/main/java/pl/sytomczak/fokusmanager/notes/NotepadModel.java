@@ -95,7 +95,7 @@ public class NotepadModel {
         }
     }
 
-    public boolean AddText(String title, String text) throws SQLException {
+    public boolean addText(String title, String text) throws SQLException {
         String msg = "";
         PreparedStatement ps = null;
         ResultSet rs = null;
@@ -120,7 +120,7 @@ public class NotepadModel {
         }
     }
 
-    public boolean Exist(String title) throws SQLException {
+    public boolean exist(String title) throws SQLException {
         String msg = "";
         PreparedStatement ps = null;
         ResultSet rs = null;
@@ -143,7 +143,7 @@ public class NotepadModel {
         }
     }
 
-    public boolean Update(String title, String newText) throws SQLException {
+    public boolean update(String title, String newText) throws SQLException {
         String msg = "";
         PreparedStatement ps = null;
         ResultSet rs = null;

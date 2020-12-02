@@ -1,5 +1,7 @@
 package pl.sytomczak.fokusmanager.notes;
 
+import pl.sytomczak.fokusmanager.dbutils.DBConnection;
+
 import javax.swing.*;
 import javax.swing.text.*;
 import java.awt.*;
@@ -7,6 +9,8 @@ import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.DataFlavor;
 import java.awt.datatransfer.StringSelection;
 import java.awt.datatransfer.Transferable;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 public class NotesOperationsWithDatabase {
@@ -39,7 +43,7 @@ public class NotesOperationsWithDatabase {
             return;
         if (filePath != null)
             if (JOptionPane.showConfirmDialog(JOptionPane.getRootFrame(), "Do you want to overwrite changes") == 0)
-                SaveNew();
+                saveNew();
         notesArea.selectAll();
         notesArea.replaceSelection("");
         notepadItem = new NotepadItem();
@@ -47,17 +51,17 @@ public class NotesOperationsWithDatabase {
         titleField.setText("");
     }
 
-    public void OpenDialog(String text) throws SQLException {
+    public void openDialog(String text) throws SQLException {
         notepadItem = notepadModel.getItemByText(text);
         if (notepadItem != null)
             orygText = notepadItem.getText();
     }
 
-    public void SaveDialog(Integer nr, String text) throws SQLException {
-        notepadModel.AddText(title(), text);
+    public void saveDialog(Integer nr, String text) throws SQLException {
+        notepadModel.addText(title(), text);
     }
 
-    public void OpenOrSaveDialog(Boolean openOrSave) throws SQLException {
+    public void openOrSaveDialog(Boolean openOrSave) throws SQLException {
 
         boolean save = true;
         boolean open = true;
@@ -67,11 +71,11 @@ public class NotesOperationsWithDatabase {
             if (notepadItem != null)
                 orygText = notepadItem.getText();
         } else if (openOrSave == save) {
-            notepadModel.AddText(title(), notepadItem.getText());
+            notepadModel.addText(title(), notepadItem.getText());
         }
     }
 
-    public void Open() throws Exception {
+    public void open() throws Exception {
 
         boolean open = true;
 
@@ -86,7 +90,7 @@ public class NotesOperationsWithDatabase {
 
         try {
 
-            OpenOrSaveDialog(true);
+            openOrSaveDialog(true);
             if (notepadItem != null) {
                 notesArea.setText(notepadItem.getText());
                 titleField.setText(notepadItem.getTitle());
@@ -96,11 +100,11 @@ public class NotesOperationsWithDatabase {
         }
     }
 
-    public void Save(Boolean showDialog) throws Exception {
+    public void save(Boolean showDialog) throws Exception {
         boolean save = true;
 
         if (save == save) {
-            notepadModel.AddText(title(), notepadItem.getText());
+            notepadModel.addText(title(), notepadItem.getText());
         }
         if (notesArea == null)
             return;
@@ -117,10 +121,10 @@ public class NotesOperationsWithDatabase {
 
         try {
             if (notepadItem != null) {
-                if (notepadModel.Exist(title()))
-                    notepadModel.Update(title(), notepadItem.getText());
+                if (notepadModel.exist(title()))
+                    notepadModel.update(title(), notepadItem.getText());
                 else
-                    notepadModel.AddText(title(), notepadItem.getText());
+                    notepadModel.addText(title(), notepadItem.getText());
             }
 
         } catch (SQLException e) {
@@ -130,7 +134,7 @@ public class NotesOperationsWithDatabase {
         }
     }
 
-    private void SaveNew() {
+    private void saveNew() {
         if (notesArea == null)
             return;
 
@@ -139,7 +143,7 @@ public class NotesOperationsWithDatabase {
             if (notepadItem != null) {
                 notepadItem.setTitle(title());
                 notepadItem.setText(notesArea.getText());
-                notepadModel.AddText(title(), notepadItem.getText());
+                notepadModel.addText(title(), notepadItem.getText());
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -147,7 +151,7 @@ public class NotesOperationsWithDatabase {
     }
 
 
-    public void Cut() {
+    public void cut() {
         Clipboard clipboard;
         clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
 
@@ -158,7 +162,7 @@ public class NotesOperationsWithDatabase {
 
     }
 
-    public void Copy() {
+    public void copy() {
 
         Clipboard clipboard;
         clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
@@ -169,7 +173,7 @@ public class NotesOperationsWithDatabase {
     }
 
 
-    public void Paste() {
+    public void paste() {
         Clipboard clipboard;
         clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
 
@@ -183,7 +187,7 @@ public class NotesOperationsWithDatabase {
 
     }
 
-    public void SelectAll() {
+    public void selectAll() {
         notesArea.selectAll();
     }
 
@@ -208,7 +212,7 @@ public class NotesOperationsWithDatabase {
         }
     }
 
-    public void Search(JTextComponent textComponent, String textString) {
+    public void search(JTextComponent textComponent, String textString) {
         removeHighLight(textComponent);
 
         try {
@@ -223,6 +227,20 @@ public class NotesOperationsWithDatabase {
             }
         } catch (BadLocationException e) {
             e.printStackTrace();
+        }
+    }
+
+    public void delete(String title) {
+        String sql = "DELETE FROM notes WHERE title = ?";
+
+        try (Connection conn = DBConnection.getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
+            pstmt.setString(1, title);
+            pstmt.executeUpdate();
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
         }
     }
 }
