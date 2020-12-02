@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="pl.sytomczak.fokusmanager.notes.gui.NotesView">
+  <grid id="27dc6" binding="notesJPanel" default-binding="true" layout-manager="GridLayoutManager" row-count="15" column-count="7" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+    <margin top="0" left="0" bottom="0" right="0"/>
+    <constraints>
+      <xy x="20" y="20" width="992" height="764"/>
+    </constraints>
+    <properties>
+      <background color="-7143597"/>
+      <foreground color="-7143597"/>
+      <maximumSize width="540" height="480"/>
+      <minimumSize width="540" height="480"/>
+    </properties>
+    <border type="none"/>
+    <children>
+      <component id="d25f2" class="javax.swing.JButton" binding="newNoteButton">
+        <constraints>
+          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false">
+            <minimum-size width="60" height="30"/>
+            <preferred-size width="60" height="30"/>
+            <maximum-size width="60" height="30"/>
+          </grid>
+        </constraints>
+        <properties>
+          <foreground color="-16777216"/>
+          <hideActionText value="true"/>
+          <text value="New"/>
+        </properties>
+      </component>
+      <component id="ec481" class="javax.swing.JTextField" binding="titleField">
+        <constraints>
+          <grid row="1" column="0" row-span="2" col-span="6" vsize-policy="0" hsize-policy="6" anchor="0" fill="0" indent="0" use-parent-layout="false">
+            <minimum-size width="400" height="50"/>
+            <preferred-size width="400" height="50"/>
+            <maximum-size width="400" height="50"/>
+          </grid>
+        </constraints>
+        <properties>
+          <background color="-855470"/>
+          <enabled value="true"/>
+          <font size="18" style="1"/>
+          <foreground color="-16777216"/>
+          <text value="Add title"/>
+          <toolTipText value=""/>
+        </properties>
+      </component>
+      <component id="90466" class="javax.swing.JButton" binding="copyButton" default-binding="true">
+        <constraints>
+          <grid row="3" column="6" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <foreground color="-16777216"/>
+          <text value="Copy"/>
+        </properties>
+      </component>
+      <scrollpane id="8986">
+        <constraints>
+          <grid row="3" column="0" row-span="12" col-span="6" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false">
+            <minimum-size width="400" height="350"/>
+            <preferred-size width="400" height="350"/>
+            <maximum-size width="400" height="350"/>
+          </grid>
+        </constraints>
+        <properties>
+          <autoscrolls value="true"/>
+        </properties>
+        <border type="none"/>
+        <children>
+          <component id="41cbb" class="javax.swing.JTextArea" binding="notesArea">
+            <constraints/>
+            <properties>
+              <autoscrolls value="true"/>
+              <background color="-1441874"/>
+              <font name="Times New Roman" size="20"/>
+              <lineWrap value="true"/>
+              <minimumSize width="400" height="350"/>
+              <text value=""/>
+              <wrapStyleWord value="true"/>
+            </properties>
+          </component>
+        </children>
+      </scrollpane>
+      <component id="797f9" class="javax.swing.JButton" binding="cutButton" default-binding="true">
+        <constraints>
+          <grid row="5" column="6" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <foreground color="-16777216"/>
+          <text value="Cut"/>
+        </properties>
+      </component>
+      <component id="32964" class="javax.swing.JButton" binding="pasteButton" default-binding="true">
+        <constraints>
+          <grid row="4" column="6" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <foreground color="-16777216"/>
+          <text value="Paste"/>
+        </properties>
+      </component>
+      <component id="3298" class="javax.swing.JButton" binding="selectAllButton" default-binding="true">
+        <constraints>
+          <grid row="6" column="6" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <foreground color="-16777216"/>
+          <text value="Select all"/>
+        </properties>
+      </component>
+      <component id="80e76" class="javax.swing.JButton" binding="saveButton" default-binding="true">
+        <constraints>
+          <grid row="0" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <foreground color="-16777216"/>
+          <text value="Save"/>
+        </properties>
+      </component>
+      <component id="5525e" class="javax.swing.JButton" binding="photoButton">
+        <constraints>
+          <grid row="0" column="6" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="6" fill="0" indent="0" use-parent-layout="false">
+            <minimum-size width="50" height="50"/>
+            <preferred-size width="50" height="50"/>
+            <maximum-size width="50" height="50"/>
+          </grid>
+        </constraints>
+        <properties>
+          <icon value="gg1.png"/>
+          <text value=""/>
+        </properties>
+      </component>
+      <component id="98c87" class="javax.swing.JButton" binding="searchButton" default-binding="true">
+        <constraints>
+          <grid row="0" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <foreground color="-16777216"/>
+          <hideActionText value="true"/>
+          <text value="Search"/>
+        </properties>
+      </component>
+      <component id="60441" class="javax.swing.JTextField" binding="searchField">
+        <constraints>
+          <grid row="0" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="2" indent="0" use-parent-layout="false">
+            <minimum-size width="150" height="30"/>
+            <preferred-size width="150" height="30"/>
+            <maximum-size width="150" height="30"/>
+          </grid>
+        </constraints>
+        <properties>
+          <background color="-2697514"/>
+          <foreground color="-16777216"/>
+        </properties>
+      </component>
+      <component id="ffcec" class="javax.swing.JButton" binding="deleteButton">
+        <constraints>
+          <grid row="7" column="6" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false">
+            <minimum-size width="20" height="20"/>
+            <preferred-size width="20" height="20"/>
+            <maximum-size width="20" height="20"/>
+          </grid>
+        </constraints>
+        <properties>
+          <background color="-894145"/>
+          <icon value="x.jpg"/>
+          <text value=""/>
+        </properties>
+      </component>
+      <component id="cb186" class="javax.swing.JButton" binding="addCategoryButton">
+        <constraints>
+          <grid row="2" column="6" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Add Category"/>
+        </properties>
+      </component>
+    </children>
+  </grid>
+</form>

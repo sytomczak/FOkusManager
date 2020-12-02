@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="pl.sytomczak.fokusmanager.notes.gui.DayNotesView">
+  <grid id="27dc6" binding="dayNotesJPanel" layout-manager="GridLayoutManager" row-count="4" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+    <margin top="0" left="0" bottom="0" right="0"/>
+    <constraints>
+      <xy x="20" y="20" width="540" height="522"/>
+    </constraints>
+    <properties>
+      <background color="-8129971"/>
+      <maximumSize width="455" height="460"/>
+      <minimumSize width="455" height="460"/>
+      <preferredSize width="455" height="460"/>
+    </properties>
+    <border type="none"/>
+    <children>
+      <grid id="8a6c9" binding="dayJPanel" layout-manager="GridLayoutManager" row-count="1" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+        <margin top="0" left="0" bottom="0" right="0"/>
+        <constraints>
+          <grid row="0" column="0" row-span="3" col-span="1" vsize-policy="3" hsize-policy="3" anchor="9" fill="0" indent="0" use-parent-layout="false">
+            <minimum-size width="150" height="100"/>
+            <preferred-size width="150" height="100"/>
+            <maximum-size width="150" height="100"/>
+          </grid>
+        </constraints>
+        <properties>
+          <background color="-7143597"/>
+        </properties>
+        <border type="none"/>
+        <children>
+          <vspacer id="376a7">
+            <constraints>
+              <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+            </constraints>
+          </vspacer>
+          <component id="6d166" class="javax.swing.JTextField" binding="dayTextField">
+            <constraints>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="9" fill="0" indent="0" use-parent-layout="false">
+                <minimum-size width="150" height="100"/>
+                <preferred-size width="150" height="100"/>
+                <maximum-size width="150" height="100"/>
+              </grid>
+            </constraints>
+            <properties>
+              <background color="-855470"/>
+              <editable value="false"/>
+              <font size="36" style="1"/>
+              <foreground color="-16777216"/>
+              <horizontalAlignment value="0"/>
+            </properties>
+          </component>
+        </children>
+      </grid>
+      <grid id="d5eff" binding="noteJPanel" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+        <margin top="0" left="0" bottom="0" right="0"/>
+        <constraints>
+          <grid row="3" column="0" row-span="1" col-span="3" vsize-policy="3" hsize-policy="3" anchor="9" fill="0" indent="0" use-parent-layout="false">
+            <minimum-size width="390" height="350"/>
+            <preferred-size width="390" height="350"/>
+            <maximum-size width="390" height="350"/>
+          </grid>
+        </constraints>
+        <properties>
+          <background color="-1441874"/>
+        </properties>
+        <border type="none"/>
+        <children>
+          <scrollpane id="e403d">
+            <constraints>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false">
+                <minimum-size width="390" height="350"/>
+                <preferred-size width="390" height="350"/>
+                <maximum-size width="390" height="350"/>
+              </grid>
+            </constraints>
+            <properties/>
+            <border type="none"/>
+            <children>
+              <component id="6cb10" class="javax.swing.JTextArea" binding="noteTextArea">
+                <constraints/>
+                <properties>
+                  <background color="-1441874"/>
+                  <font name="Times New Roman" size="20"/>
+                  <lineWrap value="true"/>
+                  <text value=""/>
+                  <toolTipText value=""/>
+                  <wrapStyleWord value="true"/>
+                </properties>
+              </component>
+            </children>
+          </scrollpane>
+        </children>
+      </grid>
+      <grid id="e168" binding="settingsJPanel" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+        <margin top="0" left="0" bottom="0" right="0"/>
+        <constraints>
+          <grid row="2" column="2" row-span="2" col-span="1" vsize-policy="3" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="true">
+            <minimum-size width="130" height="450"/>
+            <preferred-size width="130" height="450"/>
+            <maximum-size width="130" height="450"/>
+          </grid>
+        </constraints>
+        <properties>
+          <background color="-8129971"/>
+        </properties>
+        <border type="none"/>
+        <children>
+          <component id="150fc" class="javax.swing.JButton" binding="deleteButton">
+            <constraints>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                <minimum-size width="20" height="20"/>
+                <preferred-size width="20" height="20"/>
+                <maximum-size width="20" height="20"/>
+              </grid>
+            </constraints>
+            <properties>
+              <background color="-894145"/>
+              <icon value="x.jpg"/>
+              <text value=""/>
+            </properties>
+          </component>
+        </children>
+      </grid>
+      <grid id="24b2b" binding="optionJPanel" layout-manager="GridLayoutManager" row-count="3" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+        <margin top="0" left="0" bottom="0" right="0"/>
+        <constraints>
+          <grid row="0" column="1" row-span="3" col-span="1" vsize-policy="3" hsize-policy="3" anchor="9" fill="0" indent="0" use-parent-layout="false">
+            <minimum-size width="230" height="100"/>
+            <preferred-size width="230" height="100"/>
+            <maximum-size width="230" height="100"/>
+          </grid>
+        </constraints>
+        <properties>
+          <background color="-8129971"/>
+          <foreground color="-8129971"/>
+        </properties>
+        <border type="none"/>
+        <children>
+          <component id="edf48" class="javax.swing.JButton" binding="saveButton">
+            <constraints>
+              <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                <minimum-size width="70" height="20"/>
+                <preferred-size width="70" height="20"/>
+                <maximum-size width="70" height="20"/>
+              </grid>
+            </constraints>
+            <properties>
+              <text value="Save"/>
+            </properties>
+          </component>
+          <hspacer id="3d80c">
+            <constraints>
+              <grid row="1" column="0" row-span="1" col-span="2" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+            </constraints>
+          </hspacer>
+          <grid id="68ed8" binding="dateJPanel" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+            <margin top="0" left="0" bottom="0" right="0"/>
+            <constraints>
+              <grid row="0" column="0" row-span="1" col-span="2" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <background color="-8129971"/>
+              <foreground color="-8129971"/>
+            </properties>
+            <border type="none"/>
+            <children>
+              <component id="63b57" class="javax.swing.JEditorPane" binding="dateEditorPane">
+                <constraints>
+                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="6" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                    <preferred-size width="150" height="50"/>
+                  </grid>
+                </constraints>
+                <properties>
+                  <background color="-8129971"/>
+                  <font size="21" style="1"/>
+                  <foreground color="-16777216"/>
+                </properties>
+              </component>
+            </children>
+          </grid>
+          <component id="f3881" class="javax.swing.JButton" binding="addCategoryButton" default-binding="true">
+            <constraints>
+              <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false">
+                <minimum-size width="120" height="20"/>
+                <preferred-size width="120" height="20"/>
+                <maximum-size width="120" height="20"/>
+              </grid>
+            </constraints>
+            <properties>
+              <text value="Add Category"/>
+            </properties>
+          </component>
+        </children>
+      </grid>
+      <component id="f11ee" class="javax.swing.JButton" binding="photoButton">
+        <constraints>
+          <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false">
+            <minimum-size width="50" height="50"/>
+            <preferred-size width="50" height="50"/>
+            <maximum-size width="50" height="50"/>
+          </grid>
+        </constraints>
+        <properties>
+          <enabled value="true"/>
+          <hideActionText value="true"/>
+          <icon value="gg1.png"/>
+          <text value=""/>
+        </properties>
+      </component>
+    </children>
+  </grid>
+</form>
