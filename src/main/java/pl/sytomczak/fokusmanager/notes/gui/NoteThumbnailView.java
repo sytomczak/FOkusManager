@@ -16,6 +16,7 @@ public class NoteThumbnailView extends JFrame{
     private JTextField titleTextField;
 
     NotesOperationsWithDatabase notesOperationsWithDatabase = new NotesOperationsWithDatabase(titleTextField, noteTextArea, thumbnailPanel);
+    //NotesView notesView = new NotesView();
 
     public NoteThumbnailView() {
         setSize(240, 225);
@@ -25,18 +26,30 @@ public class NoteThumbnailView extends JFrame{
         setResizable(false);
         setContentPane(thumbnailPanel);
 
+        initializeButtons();
+    }
+
+    private void initializeButtons(){
+
         deleteButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 notesOperationsWithDatabase.delete(titleTextField.getText());
-                System.exit(0);
+                dispose();
+
+                NotesView notesView = new NotesView();
+
+               // notesView.setIconsInPhotoButton(notesView.pressedButton == true); // jesli baza zamknieta lub ramka odcisnieta to odcisniety tez zolty guzik na zielony
+
+
+
             }
         });
 
         unpinButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-               System.exit(0);
+                dispose();
             }
         });
     }

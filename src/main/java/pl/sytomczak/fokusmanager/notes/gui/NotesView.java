@@ -1,6 +1,7 @@
 package pl.sytomczak.fokusmanager.notes.gui;
 
 
+import pl.sytomczak.fokusmanager.calendar.gui.CalendarMainView;
 import pl.sytomczak.fokusmanager.notes.NotesOperationsWithDatabase;
 
 import javax.swing.*;
@@ -27,9 +28,10 @@ public class NotesView extends JFrame {
     private JButton deleteButton;
     private String patchToYellowImage = "/g2.png";
     private String patchToGreenImage = "/gg1.png";
-    private Boolean pressedButton = false;
+    public Boolean pressedButton = false;
 
     NotesOperationsWithDatabase notesOperationsWithDatabase;
+    NoteThumbnailView noteThumbnailView = new NoteThumbnailView();
 
     public NotesView() {
         setSize(540, 480);
@@ -54,6 +56,8 @@ public class NotesView extends JFrame {
         });
     }
 
+
+
     public void setIconsInPhotoButton(JButton btn) {
         btn.addActionListener(new ActionListener() {
             @Override
@@ -61,9 +65,25 @@ public class NotesView extends JFrame {
                 if (pressedButton == false) {
                     btn.setIcon(new ImageIcon(getClass().getResource(patchToYellowImage)));
                     pressedButton = true;
+
+
+                    noteThumbnailView.pack();
+                    noteThumbnailView.setResizable(false);
+                    noteThumbnailView.setVisible(true);
+                    noteThumbnailView.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+                    noteThumbnailView.setLocationRelativeTo(null);
+
+
+                   // calendarMainView.getComponent(notesJPanel.add(noteThumbnailView.setVisible(true)));
+
+                    //noteThumbnailView.add(calendarMainView.getContentPane(notesJPanel));
+
+
                 } else if (pressedButton == true) {
                     btn.setIcon(new ImageIcon(getClass().getResource(patchToGreenImage)));
                     pressedButton = false;
+
+                    noteThumbnailView.dispose();
 
                 }
             }

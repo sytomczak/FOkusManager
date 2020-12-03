@@ -32,9 +32,10 @@ public class CalendarMainView extends JFrame {
     private JRadioButton legendBottom;
     private JEditorPane yearsPanel;
 
-    public JButton dayButton = new JButton();
     private Months months = new Months();
     private ActualYear actualYear = new ActualYear();
+
+    public JButton dayButton = new JButton();
     public String DayName;
 
 
@@ -189,5 +190,8 @@ public class CalendarMainView extends JFrame {
 
     }
 
+    public Component getContentPane(JPanel notesJPanel) {
+        return notesJPanel;
+    }
 }
 

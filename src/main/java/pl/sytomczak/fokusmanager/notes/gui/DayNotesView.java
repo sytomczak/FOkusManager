@@ -27,7 +27,6 @@ public class DayNotesView extends JFrame {
 
     NotesOperationsWithDatabase notesOperationsWithDatabase;
     NotesView notesView = new NotesView();
-    CalendarMainView calendarMainView = new CalendarMainView();
 
     public DayNotesView() {
         initialize();
