@@ -37,8 +37,7 @@ public class NoteThumbnailView extends JFrame{
                 notesOperationsWithDatabase.delete(titleTextField.getText());
                 dispose();
 
-                NotesView notesView = new NotesView();
-
+               // NotesView notesView = new NotesView();
                // notesView.setIconsInPhotoButton(notesView.pressedButton == true); // jesli baza zamknieta lub ramka odcisnieta to odcisniety tez zolty guzik na zielony
 
 

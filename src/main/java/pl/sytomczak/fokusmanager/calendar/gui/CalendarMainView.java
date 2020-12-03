@@ -54,7 +54,7 @@ public class CalendarMainView extends JFrame {
         newNotesRadioButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                NotesView notesView = new NotesView();
+                NotesView notesView = new NotesView(notesJPanel);
                 notesView.pack();
                 notesView.setResizable(false);
                 notesView.setVisible(true);
@@ -99,7 +99,7 @@ public class CalendarMainView extends JFrame {
         dayButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                DayNotesView dayNotesView = new DayNotesView(DayName);
+                DayNotesView dayNotesView = new DayNotesView(DayName, notesJPanel);
                 dayNotesView.pack();
                 dayNotesView.setResizable(false);
                 dayNotesView.setVisible(true);

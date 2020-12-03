@@ -26,13 +26,16 @@ public class DayNotesView extends JFrame {
     private JButton deleteButton;
 
     NotesOperationsWithDatabase notesOperationsWithDatabase;
-    NotesView notesView = new NotesView();
+    NotesView notesView;
 
     public DayNotesView() {
         initialize();
+        notesView = new NotesView();
     }
 
-    public DayNotesView(String dayName) {
+
+    public DayNotesView(String dayName, JPanel notesJPanel) {
+        notesView = new NotesView(notesJPanel);
         initialize();
         dayTextField.setText(dayName);
     }
@@ -49,7 +52,6 @@ public class DayNotesView extends JFrame {
         initializeButton();
 
         notesOperationsWithDatabase = new NotesOperationsWithDatabase(dayTextField, noteTextArea, dayNotesJPanel);
-
         notesView.setIconsInPhotoButton(photoButton);
 
         Date.date(dateEditorPane);
