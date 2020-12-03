@@ -47,7 +47,7 @@ public class DayNotesView extends JFrame {
         setTitle("Notes");
         setContentPane(dayNotesJPanel);
 
-        initializeButtons();
+        initializeButton();
 
         notesOperationsWithDatabase = new NotesOperationsWithDatabase(dayTextField, noteTextArea, dayNotesJPanel);
 
@@ -59,7 +59,7 @@ public class DayNotesView extends JFrame {
 
     }
 
-    private void initializeButtons() {
+    private void initializeButton() {
 
         saveButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -70,7 +70,6 @@ public class DayNotesView extends JFrame {
                 }
             }
         });
-
         deleteButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -78,6 +77,7 @@ public class DayNotesView extends JFrame {
             }
         });
     }
+
 
 
     public static void main(String[] args) {

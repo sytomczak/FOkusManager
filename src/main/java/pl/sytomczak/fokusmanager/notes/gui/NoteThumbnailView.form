@@ -52,12 +52,10 @@
             <properties/>
             <border type="none"/>
             <children>
-              <component id="de012" class="javax.swing.JTextArea" binding="titleTextArea">
+              <component id="da6f3" class="javax.swing.JTextField" binding="titleTextField">
                 <constraints/>
                 <properties>
                   <background color="-1441874"/>
-                  <editable value="false"/>
-                  <lineWrap value="true"/>
                 </properties>
               </component>
             </children>
