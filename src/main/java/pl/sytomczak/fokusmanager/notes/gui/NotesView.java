@@ -55,7 +55,7 @@ public class NotesView extends JFrame {
         });
     }
 
-    public NotesView(JPanel mainnotesJPanel){
+    public NotesView(JPanel mainnotesJPanel) {
         mainNotesJPanel = mainnotesJPanel;
 
         setSize(540, 480);
@@ -79,40 +79,62 @@ public class NotesView extends JFrame {
         });
     }
 
-private void addThumbela() {
-    if (mainNotesJPanel != null)
-        try {
+    private void addNoteThumbnailView() {
+        if (mainNotesJPanel != null)
+            try {
 
-            JComponent jp = (JComponent) mainNotesJPanel.getComponent(mainNotesJPanel.getComponentCount() - 1);
-            if (jp != null) {
+                JComponent jPanel = (JComponent) mainNotesJPanel.getComponent(mainNotesJPanel.getComponentCount() - 1);
+                if (jPanel != null) {
 
-                JPanel jjj = new JPanel();
-                jjj.setSize(100,100);
-                int locationX = jp.getLocation().x;
-                int locationY = jp.getLocation().y;
-                if(locationY > 200)
-                    locationY = 20;
-                if(locationX > 500)
-                {
-                    locationX = 0;
-                    locationY += 25;
+                    JPanel noteThumbnailJPanel = new JPanel();
+                    noteThumbnailJPanel.setSize(240, 225);
+                    int locationX = jPanel.getLocation().x;
+                    int locationY = jPanel.getLocation().y;
+                    if (locationY > 100)
+                        locationY = 50;
+                    if (locationX > 500) {
+                        locationX = 0;
+                        locationY += 0;
+                    }
+
+                    JTextArea noteTitleTextField= new JTextArea();
+                    noteTitleTextField.setLocation(0, 0);
+                    noteTitleTextField.setSize(200, 40);
+                    noteTitleTextField.setText("test");
+                    noteTitleTextField.setLineWrap(true);
+
+                    JScrollPane jScrollPaneTitleNoteArea = new JScrollPane();
+                    jScrollPaneTitleNoteArea.setSize(200, 40);
+                    jScrollPaneTitleNoteArea.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+                    jScrollPaneTitleNoteArea.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+                    jScrollPaneTitleNoteArea.add(noteTitleTextField);
+
+
+                    JTextArea noteTextArea = new JTextArea();
+                    noteTextArea.setLocation(0, 40);
+                    noteTextArea.setSize(200, 150);
+                    noteTextArea.setText("note");
+                    noteTextArea.setLineWrap(true);
+
+                    JScrollPane jScrollPaneNoteArea = new JScrollPane();
+                    jScrollPaneNoteArea.setSize(200, 150);
+                    jScrollPaneNoteArea.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+                    jScrollPaneNoteArea.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+                    jScrollPaneNoteArea.add(noteTextArea);
+
+
+                    noteThumbnailJPanel.setLocation(locationX + jScrollPaneTitleNoteArea.getWidth() + 0, locationY);
+                    noteThumbnailJPanel.setLocation(locationX + jScrollPaneNoteArea.getWidth() + 40, locationY);
+
+                    noteThumbnailJPanel.add(jScrollPaneTitleNoteArea);
+                    noteThumbnailJPanel.add(jScrollPaneNoteArea);
+
+                    mainNotesJPanel.add(noteThumbnailJPanel);
                 }
 
-                JTextArea ja = new JTextArea();
-                ja.setLocation(0,00);
-                ja.setSize(95,95);
-                ja.setText("test");
-                ja.setLineWrap(true);
-
-                jjj.setLocation(locationX+ja.getWidth()+20, locationY);
-                jjj.add(ja);
-
-                mainNotesJPanel.add(jjj);
+            } catch (Exception ex) {
+                String msg = ex.getMessage();
             }
-
-        } catch (Exception ex) {
-            String msg = ex.getMessage();
-        }
     }
 
     public void setIconsInPhotoButton(JButton btn) {
@@ -121,19 +143,18 @@ private void addThumbela() {
             public void actionPerformed(ActionEvent e) {
                 if (pressedButton == false) {
 
-                    if(mainNotesJPanel != null)
-                       addThumbela();
+                    if (mainNotesJPanel != null)
+                        addNoteThumbnailView();
 
                     btn.setIcon(new ImageIcon(getClass().getResource(patchToYellowImage)));
                     pressedButton = true;
-
 
 
                 } else if (pressedButton == true) {
                     btn.setIcon(new ImageIcon(getClass().getResource(patchToGreenImage)));
                     pressedButton = false;
 
-                    noteThumbnailView.dispose();
+                    //   noteThumbnailView.dispose();
 
                 }
             }
