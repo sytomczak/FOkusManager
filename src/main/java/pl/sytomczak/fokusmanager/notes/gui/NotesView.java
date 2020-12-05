@@ -56,8 +56,8 @@ public class NotesView extends JFrame {
         });
     }
 
-    public NotesView(JPanel mainnotesJPanel) {
-        mainNotesJPanel = mainnotesJPanel;
+    public NotesView(JPanel mainNotesJPanel) {
+        this.mainNotesJPanel = mainNotesJPanel;
 
         setSize(540, 480);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
