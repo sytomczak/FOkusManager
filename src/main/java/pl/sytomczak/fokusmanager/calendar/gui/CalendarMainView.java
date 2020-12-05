@@ -31,6 +31,13 @@ public class CalendarMainView extends JFrame {
     private JEditorPane monthPanel;
     private JRadioButton legendBottom;
     private JEditorPane yearsPanel;
+    private JTextField monTextField;
+    private JTextField tuesTextField;
+    private JTextField wedTextField;
+    private JTextField thurstTextField4;
+    private JTextField friTextField5;
+    private JTextField sunTextField6;
+    private JTextField satTextField;
 
     private Months months = new Months();
     private ActualYear actualYear = new ActualYear();
@@ -74,6 +81,27 @@ public class CalendarMainView extends JFrame {
 
         calendarTitle.setSize(65,25);
         calendarTitle.setLocation(0,0);
+
+        monTextField.setSize(50,20);
+        monTextField.setLocation(185, 0);
+
+        tuesTextField.setSize(50,20);
+        tuesTextField.setLocation(295,0);
+
+        wedTextField.setSize(50,20);
+        wedTextField.setLocation(405,0);
+
+        thurstTextField4.setSize(60,20);
+        thurstTextField4.setLocation(510,0);
+
+        friTextField5.setSize(40,20);
+        friTextField5.setLocation(630,0);
+
+        satTextField.setSize(40,20);
+        satTextField.setLocation(740,0);
+
+        sunTextField6.setSize(40,20);
+        sunTextField6.setLocation(848,0);
 
         legendTitle.setSize(60,30);
         legendTitle.setLocation(0,0);

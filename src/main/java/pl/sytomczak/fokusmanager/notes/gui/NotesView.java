@@ -4,6 +4,7 @@ package pl.sytomczak.fokusmanager.notes.gui;
 import pl.sytomczak.fokusmanager.notes.NotesOperationsWithDatabase;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
@@ -100,8 +101,10 @@ public class NotesView extends JFrame {
                     JTextArea noteTitleTextField= new JTextArea();
                     noteTitleTextField.setLocation(0, 0);
                     noteTitleTextField.setSize(200, 40);
-                    noteTitleTextField.setText("test");
                     noteTitleTextField.setLineWrap(true);
+                    noteTitleTextField.setWrapStyleWord(true);
+                    noteTitleTextField.setText("test");
+
 
                     JScrollPane jScrollPaneTitleNoteArea = new JScrollPane();
                     jScrollPaneTitleNoteArea.setSize(200, 40);
@@ -110,11 +113,11 @@ public class NotesView extends JFrame {
                     jScrollPaneTitleNoteArea.add(noteTitleTextField);
 
 
-                    JTextArea noteTextArea = new JTextArea();
+                    JTextField noteTextArea = new JTextField();
                     noteTextArea.setLocation(0, 40);
                     noteTextArea.setSize(200, 150);
                     noteTextArea.setText("note");
-                    noteTextArea.setLineWrap(true);
+                  //  noteTextArea.setLineWrap(true);
 
                     JScrollPane jScrollPaneNoteArea = new JScrollPane();
                     jScrollPaneNoteArea.setSize(200, 150);
