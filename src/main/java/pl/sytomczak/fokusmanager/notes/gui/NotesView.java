@@ -4,7 +4,6 @@ package pl.sytomczak.fokusmanager.notes.gui;
 import pl.sytomczak.fokusmanager.notes.NotesOperationsWithDatabase;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
@@ -29,10 +28,10 @@ public class NotesView extends JFrame {
     private JButton deleteButton;
     private String patchToYellowImage = "/g2.png";
     private String patchToGreenImage = "/gg1.png";
+
     public Boolean pressedButton = false;
 
     NotesOperationsWithDatabase notesOperationsWithDatabase;
-    NoteThumbnailView noteThumbnailView = new NoteThumbnailView();
 
     public NotesView() {
         setSize(540, 480);
@@ -43,8 +42,6 @@ public class NotesView extends JFrame {
         setTitle("Notes");
         setContentPane(notesJPanel);
 
-        initializeButtons();
-
         notesOperationsWithDatabase = new NotesOperationsWithDatabase(titleField, notesArea, notesJPanel);
         setIconsInPhotoButton(photoButton);
 
@@ -54,6 +51,10 @@ public class NotesView extends JFrame {
                 titleField.setText("");
             }
         });
+
+
+        initializeButtons();
+        createThumbnailPanel();
     }
 
     public NotesView(JPanel mainNotesJPanel) {
@@ -80,7 +81,7 @@ public class NotesView extends JFrame {
         });
     }
 
-    private void addNoteThumbnailView() {
+    private void createThumbnailPanel() {
         if (mainNotesJPanel != null)
             try {
 
@@ -88,9 +89,11 @@ public class NotesView extends JFrame {
                 if (jPanel != null) {
 
                     JPanel noteThumbnailJPanel = new JPanel();
+                    noteThumbnailJPanel.setLayout(null);
                     noteThumbnailJPanel.setSize(240, 225);
-                    int locationX = jPanel.getLocation().x;
-                    int locationY = jPanel.getLocation().y;
+
+                     int locationX = jPanel.getLocation().x;
+                     int locationY = jPanel.getLocation().y;
                     if (locationY > 100)
                         locationY = 50;
                     if (locationX > 500) {
@@ -98,8 +101,8 @@ public class NotesView extends JFrame {
                         locationY += 0;
                     }
 
-                    JTextArea noteTitleTextField= new JTextArea();
-                    noteTitleTextField.setLocation(0, 0);
+                    JTextArea noteTitleTextField = new JTextArea();
+                    //  noteTitleTextField.setLocation(0, 0);
                     noteTitleTextField.setSize(200, 40);
                     noteTitleTextField.setLineWrap(true);
                     noteTitleTextField.setWrapStyleWord(true);
@@ -114,10 +117,10 @@ public class NotesView extends JFrame {
 
 
                     JTextField noteTextArea = new JTextField();
-                    noteTextArea.setLocation(0, 40);
+                    //noteTextArea.setLocation(0, 40);
                     noteTextArea.setSize(200, 150);
                     noteTextArea.setText("note");
-                  //  noteTextArea.setLineWrap(true);
+                    //  noteTextArea.setLineWrap(true);
 
                     JScrollPane jScrollPaneNoteArea = new JScrollPane();
                     jScrollPaneNoteArea.setSize(200, 150);
@@ -126,8 +129,8 @@ public class NotesView extends JFrame {
                     jScrollPaneNoteArea.add(noteTextArea);
 
 
-                    noteThumbnailJPanel.setLocation(locationX + jScrollPaneTitleNoteArea.getWidth() + 0, locationY);
-                    noteThumbnailJPanel.setLocation(locationX + jScrollPaneNoteArea.getWidth() + 40, locationY);
+                        noteThumbnailJPanel.setLocation(locationX + jScrollPaneTitleNoteArea.getWidth(), locationY);
+                      noteThumbnailJPanel.setLocation(locationX + jScrollPaneNoteArea.getWidth() + 40, locationY);
 
                     noteThumbnailJPanel.add(jScrollPaneTitleNoteArea);
                     noteThumbnailJPanel.add(jScrollPaneNoteArea);
@@ -140,6 +143,10 @@ public class NotesView extends JFrame {
             }
     }
 
+    private void addNewThumbnailView() {
+
+    }
+
     public void setIconsInPhotoButton(JButton btn) {
         btn.addActionListener(new ActionListener() {
             @Override
@@ -147,7 +154,7 @@ public class NotesView extends JFrame {
                 if (pressedButton == false) {
 
                     if (mainNotesJPanel != null)
-                        addNoteThumbnailView();
+                        createThumbnailPanel();
 
                     btn.setIcon(new ImageIcon(getClass().getResource(patchToYellowImage)));
                     pressedButton = true;
