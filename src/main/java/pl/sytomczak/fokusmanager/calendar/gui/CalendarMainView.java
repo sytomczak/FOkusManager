@@ -217,9 +217,5 @@ public class CalendarMainView extends JFrame {
 
 
     }
-
-    //public Component getContentPane(JPanel notesJPanel) {
-      //  return notesJPanel;
-  //  }
 }
 

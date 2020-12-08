@@ -24,9 +24,7 @@ public class NotesOperationsWithDatabase {
     private String orygText;
 
     private String title() {
-        String title;
-        title = titleField.getText();
-        return title;
+        return titleField.getText();
     }
 
     public NotesOperationsWithDatabase(JTextField titleField, JTextArea notesArea, JPanel panel) {
@@ -38,12 +36,9 @@ public class NotesOperationsWithDatabase {
         this.panel = panel;
     }
 
-    public void New() {
+    public void newNote() {
         if (notesArea == null)
             return;
-        if (filePath != null)
-            if (JOptionPane.showConfirmDialog(JOptionPane.getRootFrame(), "Do you want to overwrite changes") == 0)
-                saveNew();
         notesArea.selectAll();
         notesArea.replaceSelection("");
         notepadItem = new NotepadItem();
@@ -57,40 +52,13 @@ public class NotesOperationsWithDatabase {
             orygText = notepadItem.getText();
     }
 
-    public void saveDialog(Integer nr, String text) throws SQLException {
-        notepadModel.addText(title(), text);
-    }
-
-    public void openOrSaveDialog(Boolean openOrSave) throws SQLException {
-
-        boolean save = true;
-        boolean open = true;
-
-        if (openOrSave == open) {
-            notepadItem = notepadModel.getItemByTitle(title());
-            if (notepadItem != null)
-                orygText = notepadItem.getText();
-        } else if (openOrSave == save) {
-            notepadModel.addText(title(), notepadItem.getText());
-        }
-    }
-
     public void open() throws Exception {
-
-        boolean open = true;
-
-        if (open == open) {
-            notepadItem = notepadModel.getItemByTitle(title());
-            if (notepadItem != null)
-                orygText = notepadItem.getText();
-        }
-
+        openDialog(title());
         if (notesArea == null)
             return;
 
         try {
-
-            openOrSaveDialog(true);
+            openDialog(title());
             if (notepadItem != null) {
                 notesArea.setText(notepadItem.getText());
                 titleField.setText(notepadItem.getTitle());
@@ -103,7 +71,7 @@ public class NotesOperationsWithDatabase {
     public void save(Boolean showDialog) throws Exception {
         boolean save = true;
 
-        if (save == save) {
+        if (save == showDialog) {
             notepadModel.addText(title(), notepadItem.getText());
         }
         if (notesArea == null)
@@ -133,23 +101,6 @@ public class NotesOperationsWithDatabase {
             ex.printStackTrace();
         }
     }
-
-    private void saveNew() {
-        if (notesArea == null)
-            return;
-
-        try {
-
-            if (notepadItem != null) {
-                notepadItem.setTitle(title());
-                notepadItem.setText(notesArea.getText());
-                notepadModel.addText(title(), notepadItem.getText());
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-
 
     public void cut() {
         Clipboard clipboard;

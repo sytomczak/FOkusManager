@@ -126,7 +126,7 @@ public class NotepadModel {
         ResultSet rs = null;
 
         try {
-            ps = this.connection.prepareStatement("SELECT Count(title) FROM notes WHERE ?");
+            ps = this.connection.prepareStatement("SELECT Count(title) FROM notes WHERE title = ?");
             ps.setString(1, title);
 
             rs = ps.executeQuery();
