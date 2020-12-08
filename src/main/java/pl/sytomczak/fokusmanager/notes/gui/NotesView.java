@@ -1,14 +1,9 @@
 package pl.sytomczak.fokusmanager.notes.gui;
 
 
-import org.jfree.chart.title.Title;
 import pl.sytomczak.fokusmanager.notes.NotesOperationsWithDatabase;
 
 import javax.swing.*;
-import javax.swing.border.EtchedBorder;
-import javax.swing.border.TitledBorder;
-import javax.swing.text.JTextComponent;
-import javax.xml.soap.Text;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -35,13 +30,22 @@ public class NotesView extends JFrame {
     private String patchToYellowImage = "/g2.png";
     private String patchToGreenImage = "/gg1.png";
     private int counter;
-    private  JButton open;
-
+    private JPanel noteThumbnailJPanel;
     public Boolean pressedButton = false;
+    private int thumbnailCounter;
 
     NotesOperationsWithDatabase notesOperationsWithDatabase;
 
     public NotesView() {
+        Initialize();
+    }
+
+    public NotesView(JPanel mainNotesJPanel) {
+        this.mainNotesJPanel = mainNotesJPanel;
+        Initialize();
+    }
+
+    private void Initialize(){
         setSize(540, 480);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(null);
@@ -60,43 +64,7 @@ public class NotesView extends JFrame {
             }
         });
 
-
         initializeButtons();
-        createThumbnailPanel();
-    }
-
-    public NotesView(JPanel mainNotesJPanel) {
-        this.mainNotesJPanel = mainNotesJPanel;
-
-        setSize(540, 480);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setLayout(null);
-        setLocationRelativeTo(null);
-        setResizable(false);
-        setTitle("Notes 2");
-        setContentPane(notesJPanel);
-
-        initializeButtons();
-
-        notesOperationsWithDatabase = new NotesOperationsWithDatabase(titleField, notesArea, notesJPanel);
-        setIconsInPhotoButton(photoButton);
-
-        titleField.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                titleField.setText("");
-            }
-        });
-
-        open.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                try {
-                    notesOperationsWithDatabase.open();
-                } catch (Exception exception) {
-                    exception.printStackTrace();
-                }
-            }
-        });
     }
 
     private void createThumbnailPanel() {
@@ -111,7 +79,7 @@ public class NotesView extends JFrame {
                     int descriptionWidth = 200;
                     int descriptionHeight = 150;
 
-                    JPanel noteThumbnailJPanel = new JPanel();
+                    noteThumbnailJPanel = new JPanel();
                     noteThumbnailJPanel.setSize(titleWidth + 70, titleHeight + descriptionHeight + 10);
 
                     int locationX = jPanel.getLocation().x;
@@ -123,8 +91,8 @@ public class NotesView extends JFrame {
                         locationY += 0;
                     }
 
-                    JTextArea title = addTitleInThumbnail("", titleWidth, titleHeight, true, noteThumbnailJPanel);
-                    JTextArea description = addDescriptionInThumbnail("", descriptionWidth, descriptionHeight, titleHeight, true, noteThumbnailJPanel);
+                    JTextArea title = addTitleInThumbnail("Ssss", titleWidth, titleHeight, true, noteThumbnailJPanel);
+                    JTextArea description = addDescriptionInThumbnail("opis opis opis", descriptionWidth, descriptionHeight, titleHeight, true, noteThumbnailJPanel);
 
 
                     if (counter == 0) {
@@ -134,13 +102,14 @@ public class NotesView extends JFrame {
                         locationX = locationX + titleWidth;
                         counter++;
                     }
-                    noteThumbnailJPanel.setLocation(locationX + 40, locationY);
+                    noteThumbnailJPanel.setLocation(locationX + 55, locationY);
 
-                    addButtonToTheRightOfTheTitleAndDescription("eeeee", 20, 20, noteThumbnailJPanel, title, new Point(titleWidth + 5, 0), "Kliknij, żeby wyczyścić tytuł", ThumbnailTextAreaUsedControl.TITLE);
-                    addButtonToTheRightOfTheTitleAndDescription("aaa", 20, 20, noteThumbnailJPanel, description, new Point(descriptionWidth + 5, descriptionHeight + titleHeight / 2), "Kliknij, żeby wyczyścić opis ", ThumbnailTextAreaUsedControl.DESCRIPTION);
+                    addButtonToTheRightOfTheTitleAndDescription("eeeee", 20, 20, noteThumbnailJPanel, title, new Point(titleWidth + 5, 0), "Kliknij, żeby wyczyścić tytuł", ThumbnailTextAreaUsedControl.TITLE); //odpina notattke, usowa panel lub sprawia, ze jest niewidoczny
+                    addButtonToTheRightOfTheTitleAndDescription("aaa", 20, 20, noteThumbnailJPanel, description, new Point(descriptionWidth + 5, descriptionHeight + titleHeight / 2), "Kliknij, żeby wyczyścić opis ", ThumbnailTextAreaUsedControl.DESCRIPTION); // usowa notatke z bazy calkowicie i odpina notatke - niewidoczny panel
 
 
-             //       noteThumbnailJPanel.setBackground(Color.getHSBColor(82,107,242));
+                    //   notesOperationsWithDatabase.open();
+                    //       noteThumbnailJPanel.setBackground(Color.getHSBColor(82,107,242));
                     mainNotesJPanel.add(noteThumbnailJPanel);
 //                    mainNotesJPanel.repaint();
 //                    mainNotesJPanel.revalidate();
@@ -153,7 +122,7 @@ public class NotesView extends JFrame {
         }
     }
 
-    private JTextArea addTitleInThumbnail(String title, int width, int height, boolean isWrap, JPanel parentPanel) {
+    private JTextArea addTitleInThumbnail(String title, int width, int height, boolean isWrap, JPanel parentPanel) {// odczyt automatycznie tytulu i calej notatki czyli moze byc chyba jedna metoda lub 2 ustawienie tytulu i doczytu wielkosc itp plus osobna ze te 2 panele po zaznaczaeniu zoltej pinezki automatycznie sie odczytuja
         if (parentPanel == null)
             return null;
 
@@ -172,7 +141,7 @@ public class NotesView extends JFrame {
         JScrollPane jScrollPaneTitleNoteArea = new JScrollPane(noteTitleTextField);
         jScrollPaneTitleNoteArea.setName("title_scrollPane");
         jScrollPaneTitleNoteArea.setSize(width, height);
-        jScrollPaneTitleNoteArea.setLocation(0,0);
+        jScrollPaneTitleNoteArea.setLocation(0, 0);
         jScrollPaneTitleNoteArea.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
         parentPanel.add(jScrollPaneTitleNoteArea);
 //        parentPanel.repaint();
@@ -181,13 +150,13 @@ public class NotesView extends JFrame {
         return noteTitleTextField;
     }
 
-    private JTextArea addDescriptionInThumbnail(String description, int width, int height, int titleHeight, boolean isWrap, JPanel parentPanel) {
+    private JTextArea addDescriptionInThumbnail(String description, int width, int height, int titleHeight, boolean isWrap, JPanel parentPanel) { //jw
         if (parentPanel == null)
             return null;
 
         if (width < 0)
             width = 100;
-        if(titleHeight <0)
+        if (titleHeight < 0)
             titleHeight = 40;
         if (height < 0)
             height = 100;
@@ -211,10 +180,7 @@ public class NotesView extends JFrame {
     }
 
 
-
-
-
-
+    //dodac opcje odpina notatke i odnzacza na zielona pinezke kobkretny dzien lub tytul notatki jedna metoda do 2 guzikow. / zrobic 2 metody i 2 osobne guziki ewentualnie jeden wyg;ad a potem robic na 2 i dodac foto i funckje
     private void addButtonToTheRightOfTheTitleAndDescription(String text, int width, int height, JPanel parentPanel, JTextArea textArea, Point location, String toolTip, ThumbnailTextAreaUsedControl controlTypeForButtonClick) {
         if (parentPanel == null)
             return;
@@ -223,8 +189,8 @@ public class NotesView extends JFrame {
             width = 10;
         if (height < 0)
             height = 10;
-        if(location== null)
-            location = new Point(parentPanel.getWidth()-50, 0);
+        if (location == null)
+            location = new Point(parentPanel.getWidth() - 50, 0);
 
         JButton btn = new JButton(text);
         btn.setSize(width, height);
@@ -232,10 +198,14 @@ public class NotesView extends JFrame {
         btn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (controlTypeForButtonClick == ThumbnailTextAreaUsedControl.TITLE && textArea != null && textArea.getName() == "title_textArea")
-                    textArea.setText(null);
-                else if (controlTypeForButtonClick == ThumbnailTextAreaUsedControl.DESCRIPTION && textArea.getName() == "description_textArea")
-                    textArea.setText(null);
+//                if (controlTypeForButtonClick == ThumbnailTextAreaUsedControl.TITLE && textArea != null && textArea.getName() == "title_textArea")
+//                    textArea.setText(null);
+//              else if (controlTypeForButtonClick == ThumbnailTextAreaUsedControl.DESCRIPTION && textArea.getName() == "description_textArea")
+//                    textArea.setText(null);
+                if (noteThumbnailJPanel.isVisible() == true) {
+                    dispose();
+                    noteThumbnailJPanel.setVisible(false);
+                }
 
             }
         });
@@ -247,27 +217,24 @@ public class NotesView extends JFrame {
     }
 
 
-    public enum ThumbnailTextAreaUsedControl
-    {
+    //tylko do czyszczenia textArea, potem sobie wciśniesz co tam będziesz chciała żeby się
+    // działo po kliknięciu w przycisk
+    public enum ThumbnailTextAreaUsedControl {
         TITLE,
         DESCRIPTION
     }
 
 
-
-
-
-
-
-    public void setIconsInPhotoButton(JButton btn) {
+    public void setIconsInPhotoButton(JButton btn) { //zmiana nazyw w zaleznosci od klikniecia + ograniczenie paneli miniaturek niwa metoda
         btn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (pressedButton == false) {
 
-                    if (mainNotesJPanel != null)
+                    if (mainNotesJPanel != null && thumbnailCounter <4) {
                         createThumbnailPanel();
-
+                        thumbnailCounter++;
+                    }
                     btn.setIcon(new ImageIcon(getClass().getResource(patchToYellowImage)));
                     pressedButton = true;
 
@@ -288,7 +255,7 @@ public class NotesView extends JFrame {
         newNoteButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                notesOperationsWithDatabase.New();
+                notesOperationsWithDatabase.newNote();
             }
         });
         saveButton.addActionListener(new ActionListener() {
