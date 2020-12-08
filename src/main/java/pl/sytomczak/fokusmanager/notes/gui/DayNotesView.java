@@ -1,7 +1,6 @@
 package pl.sytomczak.fokusmanager.notes.gui;
 
 import pl.sytomczak.fokusmanager.calendar.Date;
-import pl.sytomczak.fokusmanager.calendar.gui.CalendarMainView;
 import pl.sytomczak.fokusmanager.notes.NotesOperationsWithDatabase;
 
 import javax.swing.*;
