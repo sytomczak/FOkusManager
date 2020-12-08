@@ -108,12 +108,7 @@ public class NotesView extends JFrame {
                     addButtonToTheRightOfTheTitleAndDescription("aaa", 20, 20, noteThumbnailJPanel, description, new Point(descriptionWidth + 5, descriptionHeight + titleHeight / 2), "Kliknij, żeby wyczyścić opis ", ThumbnailTextAreaUsedControl.DESCRIPTION); // usowa notatke z bazy calkowicie i odpina notatke - niewidoczny panel
 
 
-                    //   notesOperationsWithDatabase.open();
-                    //       noteThumbnailJPanel.setBackground(Color.getHSBColor(82,107,242));
                     mainNotesJPanel.add(noteThumbnailJPanel);
-//                    mainNotesJPanel.repaint();
-//                    mainNotesJPanel.revalidate();
-//                    mainNotesJPanel.validate();
                 }
 
             } catch (Exception ex) {
@@ -144,9 +139,6 @@ public class NotesView extends JFrame {
         jScrollPaneTitleNoteArea.setLocation(0, 0);
         jScrollPaneTitleNoteArea.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
         parentPanel.add(jScrollPaneTitleNoteArea);
-//        parentPanel.repaint();
-//        parentPanel.revalidate();
-//        parentPanel.validate();
         return noteTitleTextField;
     }
 
@@ -173,9 +165,6 @@ public class NotesView extends JFrame {
         jScrollPaneNoteArea.setSize(width, height);
         jScrollPaneNoteArea.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
         parentPanel.add(jScrollPaneNoteArea);
-//        parentPanel.repaint();
-//        parentPanel.revalidate();
-//        parentPanel.validate();
         return noteTextArea;
     }
 
@@ -217,15 +206,13 @@ public class NotesView extends JFrame {
     }
 
 
-    //tylko do czyszczenia textArea, potem sobie wciśniesz co tam będziesz chciała żeby się
-    // działo po kliknięciu w przycisk
     public enum ThumbnailTextAreaUsedControl {
         TITLE,
         DESCRIPTION
     }
 
 
-    public void setIconsInPhotoButton(JButton btn) { //zmiana nazyw w zaleznosci od klikniecia + ograniczenie paneli miniaturek niwa metoda
+    public void setIconsInPhotoButton(JButton btn) { //zmiana nazyw w zaleznosci od klikniecia + ograniczenie paneli miniaturek nowa metoda
         btn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
