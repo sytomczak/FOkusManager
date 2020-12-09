@@ -27,6 +27,7 @@ public class NotesView extends JFrame {
     private JButton addCategoryButton;
     private JButton photoButton;
     private JButton deleteButton;
+    private JButton openButton;
     private String patchToYellowImage = "/g2.png";
     private String patchToGreenImage = "/gg1.png";
     private int counter;
@@ -121,6 +122,8 @@ public class NotesView extends JFrame {
         }
     }
 
+    // odczyt automatycznie tytulu i calej notatki czyli moze byc chyba jedna metoda lub 2 ustawienie tytulu i doczytu wielkosc itp plus osobna ze te 2 panele po zaznaczaeniu zoltej pinezki automatycznie sie odczytuja
+
     private JTextArea createThumbnailTextArea(String note, int location, int width, int height, JPanel parentPanel) {
         if (parentPanel == null)
             return null;
@@ -148,6 +151,7 @@ public class NotesView extends JFrame {
             height = 40;
 
         JTextArea titleArea = createThumbnailTextArea("title",0,200,40, noteThumbnailJPanel);
+
         return titleArea;
     }
 
@@ -163,7 +167,7 @@ public class NotesView extends JFrame {
         return noteTextArea;
     }
 
-//    private JTextArea addTitleInThumbnail(String title, int width, int height, boolean isWrap, JPanel parentPanel) {// odczyt automatycznie tytulu i calej notatki czyli moze byc chyba jedna metoda lub 2 ustawienie tytulu i doczytu wielkosc itp plus osobna ze te 2 panele po zaznaczaeniu zoltej pinezki automatycznie sie odczytuja
+//    private JTextArea addTitleInThumbnail(String title, int width, int height, boolean isWrap, JPanel parentPanel) {
 //        if (parentPanel == null)
 //            return null;
 //
@@ -259,16 +263,19 @@ public class NotesView extends JFrame {
     }
 
 
-    public void setIconsInPhotoButton(JButton btn) { //zmiana nazyw w zaleznosci od klikniecia + ograniczenie paneli miniaturek nowa metoda
+    private int limitCreateThumbnailPanel() {
+        if (mainNotesJPanel != null && thumbnailCounter < 4)
+            createThumbnailPanel();
+            return  thumbnailCounter++;
+
+    }
+
+    public void setIconsInPhotoButton(JButton btn) { 
         btn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (pressedButton == false) {
-
-                    if (mainNotesJPanel != null && thumbnailCounter < 4) {
-                        createThumbnailPanel();
-                        thumbnailCounter++;
-                    }
+                    limitCreateThumbnailPanel();
                     btn.setIcon(new ImageIcon(getClass().getResource(patchToYellowImage)));
                     pressedButton = true;
 
@@ -277,7 +284,8 @@ public class NotesView extends JFrame {
                     btn.setIcon(new ImageIcon(getClass().getResource(patchToGreenImage)));
                     pressedButton = false;
 
-                    //   noteThumbnailView.dispose();
+                    //noteThumbnailJPanel.setVisible(false);
+
 
                 }
             }
@@ -336,6 +344,16 @@ public class NotesView extends JFrame {
                 notesOperationsWithDatabase.delete(titleField.getText());
             }
         });
+
+//        openButton.addActionListener(new ActionListener() {
+//            public void actionPerformed(ActionEvent e) {
+//                try {
+//                    notesOperationsWithDatabase.open();
+//                } catch (Exception exception) {
+//                    exception.printStackTrace();
+//                }
+//            }
+//        });
     }
 
     public static void main(String[] args) {
