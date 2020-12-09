@@ -45,7 +45,7 @@ public class NotesView extends JFrame {
         Initialize();
     }
 
-    private void Initialize(){
+    private void Initialize() {
         setSize(540, 480);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(null);
@@ -91,8 +91,12 @@ public class NotesView extends JFrame {
                         locationY += 0;
                     }
 
-                    JTextArea title = addTitleInThumbnail("Ssss", titleWidth, titleHeight, true, noteThumbnailJPanel);
-                    JTextArea description = addDescriptionInThumbnail("opis opis opis", descriptionWidth, descriptionHeight, titleHeight, true, noteThumbnailJPanel);
+
+                    JTextArea title = addTitleInThumbnail(titleWidth,titleHeight);
+                    JTextArea description = addDescriptionInThumbnail(descriptionWidth, descriptionHeight, titleHeight);
+
+//                    JTextArea title = addTitleInThumbnail("Ssss", titleWidth, titleHeight, true, noteThumbnailJPanel);
+//                    JTextArea description = addDescriptionInThumbnail("opis opis opis", descriptionWidth, descriptionHeight, titleHeight, true, noteThumbnailJPanel);
 
 
                     if (counter == 0) {
@@ -117,35 +121,37 @@ public class NotesView extends JFrame {
         }
     }
 
-    private JTextArea addTitleInThumbnail(String title, int width, int height, boolean isWrap, JPanel parentPanel) {// odczyt automatycznie tytulu i calej notatki czyli moze byc chyba jedna metoda lub 2 ustawienie tytulu i doczytu wielkosc itp plus osobna ze te 2 panele po zaznaczaeniu zoltej pinezki automatycznie sie odczytuja
+    private JTextArea createThumbnailTextArea(String note, int location, int width, int height, JPanel parentPanel) {
         if (parentPanel == null)
             return null;
 
+        JTextArea noteTextArea = new JTextArea();
+       // noteTextArea.setName("title_textArea");
+        noteTextArea.setSize(width, height);
+        noteTextArea.setLineWrap(true);
+        noteTextArea.setWrapStyleWord(true);
+        noteTextArea.setText(note);
+
+        JScrollPane jScrollPaneNoteArea = new JScrollPane(noteTextArea);
+     //   jScrollPaneNoteArea.setName("title_scrollPane");
+        jScrollPaneNoteArea.setSize(width, height);
+        jScrollPaneNoteArea.setLocation(0, location);
+        jScrollPaneNoteArea.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+        parentPanel.add(jScrollPaneNoteArea);
+        return noteTextArea;
+    }
+
+    private JTextArea addTitleInThumbnail(int width, int height) {
         if (width < 0)
             width = 100;
         if (height < 0)
             height = 40;
 
-        JTextArea noteTitleTextField = new JTextArea();
-        noteTitleTextField.setName("title_textArea");
-        noteTitleTextField.setSize(width, height);
-        noteTitleTextField.setLineWrap(isWrap);
-        noteTitleTextField.setWrapStyleWord(true);
-        noteTitleTextField.setText(title);
-
-        JScrollPane jScrollPaneTitleNoteArea = new JScrollPane(noteTitleTextField);
-        jScrollPaneTitleNoteArea.setName("title_scrollPane");
-        jScrollPaneTitleNoteArea.setSize(width, height);
-        jScrollPaneTitleNoteArea.setLocation(0, 0);
-        jScrollPaneTitleNoteArea.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
-        parentPanel.add(jScrollPaneTitleNoteArea);
-        return noteTitleTextField;
+        JTextArea titleArea = createThumbnailTextArea("title",0,200,40, noteThumbnailJPanel);
+        return titleArea;
     }
 
-    private JTextArea addDescriptionInThumbnail(String description, int width, int height, int titleHeight, boolean isWrap, JPanel parentPanel) { //jw
-        if (parentPanel == null)
-            return null;
-
+    private JTextArea addDescriptionInThumbnail(int width, int height, int titleHeight) {
         if (width < 0)
             width = 100;
         if (titleHeight < 0)
@@ -153,20 +159,61 @@ public class NotesView extends JFrame {
         if (height < 0)
             height = 100;
 
-        JTextArea noteTextArea = new JTextArea();
-        noteTextArea.setName("description_textArea");
-        noteTextArea.setSize(width, height);
-        noteTextArea.setText(description);
-        noteTextArea.setLineWrap(isWrap);
-
-        JScrollPane jScrollPaneNoteArea = new JScrollPane(noteTextArea);
-        jScrollPaneNoteArea.setName("description_scrollPane");
-        jScrollPaneNoteArea.setLocation(0, titleHeight);
-        jScrollPaneNoteArea.setSize(width, height);
-        jScrollPaneNoteArea.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
-        parentPanel.add(jScrollPaneNoteArea);
+        JTextArea noteTextArea = createThumbnailTextArea("description", 40,200,150, noteThumbnailJPanel);
         return noteTextArea;
     }
+
+//    private JTextArea addTitleInThumbnail(String title, int width, int height, boolean isWrap, JPanel parentPanel) {// odczyt automatycznie tytulu i calej notatki czyli moze byc chyba jedna metoda lub 2 ustawienie tytulu i doczytu wielkosc itp plus osobna ze te 2 panele po zaznaczaeniu zoltej pinezki automatycznie sie odczytuja
+//        if (parentPanel == null)
+//            return null;
+//
+//        if (width < 0)
+//            width = 100;
+//        if (height < 0)
+//            height = 40;
+//
+//        JTextArea noteTitleTextField = new JTextArea();
+//        noteTitleTextField.setName("title_textArea");
+//        noteTitleTextField.setSize(width, height);
+//        noteTitleTextField.setLineWrap(isWrap);
+//        noteTitleTextField.setWrapStyleWord(true);
+//        noteTitleTextField.setText(title);
+//
+//        JScrollPane jScrollPaneTitleNoteArea = new JScrollPane(noteTitleTextField);
+//        jScrollPaneTitleNoteArea.setName("title_scrollPane");
+//        jScrollPaneTitleNoteArea.setSize(width, height);
+//        jScrollPaneTitleNoteArea.setLocation(0, 0);
+//        jScrollPaneTitleNoteArea.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+//        parentPanel.add(jScrollPaneTitleNoteArea);
+//        return noteTitleTextField;
+//    }
+//
+//
+//    private JTextArea addDescriptionInThumbnail(String description, int width, int height, int titleHeight, boolean isWrap, JPanel parentPanel) { //jw
+//        if (parentPanel == null)
+//            return null;
+//
+//        if (width < 0)
+//            width = 100;
+//        if (titleHeight < 0)
+//            titleHeight = 40;
+//        if (height < 0)
+//            height = 100;
+//
+//        JTextArea noteTextArea = new JTextArea();
+//        noteTextArea.setName("description_textArea");
+//        noteTextArea.setSize(width, height);
+//        noteTextArea.setText(description);
+//        noteTextArea.setLineWrap(isWrap);
+//
+//        JScrollPane jScrollPaneNoteArea = new JScrollPane(noteTextArea);
+//        jScrollPaneNoteArea.setName("description_scrollPane");
+//        jScrollPaneNoteArea.setLocation(0, titleHeight);
+//        jScrollPaneNoteArea.setSize(width, height);
+//        jScrollPaneNoteArea.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+//        parentPanel.add(jScrollPaneNoteArea);
+//        return noteTextArea;
+//    }
 
 
     //dodac opcje odpina notatke i odnzacza na zielona pinezke kobkretny dzien lub tytul notatki jedna metoda do 2 guzikow. / zrobic 2 metody i 2 osobne guziki ewentualnie jeden wyg;ad a potem robic na 2 i dodac foto i funckje
@@ -218,7 +265,7 @@ public class NotesView extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 if (pressedButton == false) {
 
-                    if (mainNotesJPanel != null && thumbnailCounter <4) {
+                    if (mainNotesJPanel != null && thumbnailCounter < 4) {
                         createThumbnailPanel();
                         thumbnailCounter++;
                     }
