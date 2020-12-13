@@ -1,5 +1,6 @@
 package pl.sytomczak.fokusmanager.calendar.gui;
 
+import javafx.scene.Parent;
 import pl.sytomczak.fokusmanager.calendar.Clock;
 import pl.sytomczak.fokusmanager.calendar.months.ActualMonth;
 import pl.sytomczak.fokusmanager.calendar.months.Months;
@@ -45,10 +46,19 @@ public class CalendarMainView extends JFrame {
     public JButton dayButton = new JButton();
     public String DayName;
 
+    public JPanel NotesJPanel()
+    {
+        return notesJPanel;
+    }
+
+
+    public static CalendarMainView instance;
 
     public CalendarMainView() {
         setContentPane(mainJPanel);
         setTitle("FocusManager");
+
+        instance = this;
 
         mainJPanel.setPreferredSize(new Dimension(1400, 900));
         mainJPanel.registerKeyboardAction(new ActionListener() {
