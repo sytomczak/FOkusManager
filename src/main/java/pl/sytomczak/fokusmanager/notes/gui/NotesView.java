@@ -35,7 +35,7 @@ public class NotesView extends JFrame {
     private int counter;
     private JPanel noteThumbnailJPanel;
     private int thumbnailCounter;
-    private String patchToDeleteIcon = "/x.png";
+    private String patchToDeleteIcon = "/x.jpg";
     private String patchToUnpinIcon = "/pin3.png";
 
     public Boolean pressedButton = false;
@@ -87,7 +87,7 @@ public class NotesView extends JFrame {
                     int descriptionHeight = 150;
 
 
-                    noteThumbnailJPanel = new JPanel(new GridLayout(4, 3));
+                    noteThumbnailJPanel = new JPanel(new GridLayout(5, 3));
                     noteThumbnailJPanel.setName("noteThumbnailJPanel");
                     noteThumbnailJPanel.setBackground(Color.BLUE);
                     noteThumbnailJPanel.setSize(titleWidth + 70 + 20, titleHeight + descriptionHeight + 10 + 50);
@@ -108,9 +108,11 @@ public class NotesView extends JFrame {
                     JTextArea description = addDescriptionInThumbnail(descriptionWidth, descriptionHeight, titleHeight, noteThumbnailJPanel);
                     JTextArea information = informationPanel("information", titleWidth, titleHeight, noteThumbnailJPanel); //, new Point(titleWidth + 5, 0), "Kliknij, żeby wyczyścić tytuł");
 
-                    JButton btn = unpinAndDeleteButtons("btn", 100, 25, noteThumbnailJPanel);
-                    btn.setSize(100, 30);
-                    btn.setLocation(0, 0);
+
+                     JButton unpinButton = unpinButton();
+                    //JButton deleteButtons = unpinAndDeleteButtons(50,30,noteThumbnailJPanel);
+
+                    JButton deleteButton = deleteButton();
 
 
                     if (counter == 0) {
@@ -133,31 +135,38 @@ public class NotesView extends JFrame {
         }
     }
 
-    private JButton unpinAndDeleteButtons(String text, int width, int height, JPanel parentPanel) {
-        JPanel panel = new JPanel();
+    private JButton unpinAndDeleteButtons(int width, int height, JPanel parentPanel) {
+        JPanel panel = new JPanel();//new GridLayout(1, 2));
 
-        JButton btn = new JButton(text);
+        JButton btn = new JButton();
         btn.setSize(width, height);
         btn.setLocation(0, 0);
-        btn.setName(text);
+        //   btn.setIcon(new ImageIcon(getClass().getResource(patchToDeleteIcon)));
+        // btn.setName(text);
 
         panel.add(btn);
 
-        btn = new JButton(text);
-        btn.setSize(width, height);
-        btn.setLocation(0, 0);
-        btn.setName(text + " " + text);
-        panel.add(btn);
+//        btn = new JButton();
+//        btn.setSize(width, height);
+//        btn.setLocation(0, 0);
+//     //   btn.setIcon(new ImageIcon(getClass().getResource(patchToUnpinIcon)));
+//       // btn.setName("dd" + " " + "ss");
+//        panel.add(btn);
         parentPanel.add(panel);
         return btn;
     }
 
-    private JButton unpinButton() {
-        JButton unpinButton = unpinAndDeleteButtons("btn", 100, 25, noteThumbnailJPanel);
-        unpinButton.setIcon(new ImageIcon(getClass().getResource(patchToUnpinIcon)));
-        if (pressedButton = true) {
+    private JButton deleteButton() {
+        JButton deleteButton = unpinAndDeleteButtons(50, 25, noteThumbnailJPanel);
+        deleteButton.setIcon(new ImageIcon(getClass().getResource(patchToDeleteIcon)));
 
-        }
+        return deleteButton;
+    }
+
+    private JButton unpinButton() {
+        JButton unpinButton = unpinAndDeleteButtons(50, 25, noteThumbnailJPanel);
+        unpinButton.setIcon(new ImageIcon(getClass().getResource(patchToUnpinIcon)));
+
         return unpinButton;
     }
 
