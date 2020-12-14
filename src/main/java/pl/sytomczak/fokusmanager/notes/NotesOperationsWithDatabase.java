@@ -68,6 +68,13 @@ public class NotesOperationsWithDatabase {
         }
     }
 
+    public NotepadItem getItem(String title) throws SQLException {
+        if(title == null)
+            return null;
+
+        return notepadModel.getItemByTitle(title);
+    }
+
     public void save(Boolean showDialog) throws Exception {
         boolean save = true;
 

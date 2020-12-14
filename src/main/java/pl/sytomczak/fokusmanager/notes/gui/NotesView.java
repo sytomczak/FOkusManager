@@ -1,7 +1,7 @@
 package pl.sytomczak.fokusmanager.notes.gui;
 
 
-import pl.sytomczak.fokusmanager.calendar.gui.CalendarMainView;
+import pl.sytomczak.fokusmanager.notes.NotepadItem;
 import pl.sytomczak.fokusmanager.notes.NotesOperationsWithDatabase;
 
 import javax.swing.*;
@@ -10,6 +10,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.sql.SQLException;
 
 public class NotesView extends JFrame {
     private JPanel notesJPanel;
@@ -105,11 +106,9 @@ public class NotesView extends JFrame {
 
                     JTextArea title = addTitleInThumbnail(titleWidth, titleHeight, noteThumbnailJPanel);
                     JTextArea description = addDescriptionInThumbnail(descriptionWidth, descriptionHeight, titleHeight, noteThumbnailJPanel);
+                    JTextArea information = informationPanel("information", titleWidth, titleHeight, noteThumbnailJPanel); //, new Point(titleWidth + 5, 0), "Kliknij, żeby wyczyścić tytuł");
 
-                    JTextArea buttons = nowyPanelD("eeeee", 50, 10, noteThumbnailJPanel, description, new Point(titleWidth + 5, 0), "Kliknij, żeby wyczyścić tytuł", ThumbnailTextAreaUsedControl.TITLE);
-
-
-                    JButton btn = nowyButton("btn", 100, 25, noteThumbnailJPanel);
+                    JButton btn = unpinAndDeleteButtons("btn", 100, 25, noteThumbnailJPanel);
                     btn.setSize(100, 30);
                     btn.setLocation(0, 0);
 
@@ -125,8 +124,7 @@ public class NotesView extends JFrame {
                         counter++;
                     }
                     noteThumbnailJPanel.setLocation(locationX + 20, 50);
-
-                    CalendarMainView.instance.NotesJPanel().add(noteThumbnailJPanel);
+                    mainNotesJPanel.add(noteThumbnailJPanel);
                 }
 
             } catch (Exception ex) {
@@ -135,13 +133,14 @@ public class NotesView extends JFrame {
         }
     }
 
-    private JButton nowyButton(String text, int width, int height, JPanel parentPanel) {
+    private JButton unpinAndDeleteButtons(String text, int width, int height, JPanel parentPanel) {
         JPanel panel = new JPanel();
 
         JButton btn = new JButton(text);
         btn.setSize(width, height);
         btn.setLocation(0, 0);
         btn.setName(text);
+
         panel.add(btn);
 
         btn = new JButton(text);
@@ -153,51 +152,18 @@ public class NotesView extends JFrame {
         return btn;
     }
 
+    private JButton unpinButton() {
+        JButton unpinButton = unpinAndDeleteButtons("btn", 100, 25, noteThumbnailJPanel);
+        unpinButton.setIcon(new ImageIcon(getClass().getResource(patchToUnpinIcon)));
+        if (pressedButton = true) {
+
+        }
+        return unpinButton;
+    }
+
     // odczyt automatycznie tytulu i calej notatki czyli moze byc chyba jedna metoda lub 2 ustawienie tytulu i doczytu wielkosc itp plus osobna ze te 2 panele po zaznaczaeniu zoltej pinezki automatycznie sie odczytuja
 
-    private JTextArea createThumbnailTextArea(String note, int location, int width, int height, JPanel parentPanel) {
-        if (parentPanel == null)
-            return null;
-
-        JTextArea noteTextArea = new JTextArea();
-        noteTextArea.setSize(width, height);
-        noteTextArea.setLineWrap(true);
-        noteTextArea.setWrapStyleWord(true);
-        noteTextArea.setText(note);
-
-        JScrollPane jScrollPaneNoteArea = new JScrollPane(noteTextArea);
-        jScrollPaneNoteArea.setSize(width, height);
-        jScrollPaneNoteArea.setLocation(0, location);
-        jScrollPaneNoteArea.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
-        parentPanel.add(jScrollPaneNoteArea);
-        return noteTextArea;
-    }
-
-
-    private JTextArea addTitleInThumbnail(int width, int height, JPanel parentPanel) {
-        if (width < 0)
-            width = 100;
-        if (height < 0)
-            height = 40;
-
-        JTextArea titleArea = createThumbnailTextArea("title", 0, width, height, parentPanel);
-        return titleArea;
-    }
-
-    private JTextArea addDescriptionInThumbnail(int width, int height, int titleHeight, JPanel parentPanel) {
-        if (width < 0)
-            width = 100;
-        if (titleHeight < 0)
-            titleHeight = 40;
-        if (height < 0)
-            height = 100;
-
-        JTextArea noteTextArea = createThumbnailTextArea("description", 40, width, height, parentPanel);
-        return noteTextArea;
-    }
-
-
-    private JTextArea nowyPanel(String note, int location, int width, int height, JPanel parentPanel) {
+    private JTextArea newThumbnailPanel(String note, int location, int width, int height, JPanel parentPanel) {
         if (parentPanel == null)
             return null;
 
@@ -210,75 +176,73 @@ public class NotesView extends JFrame {
         return nowa;
     }
 
-    private JTextArea nowyPanelD(String text, int width, int height, JPanel parentPanel, JTextArea textArea, Point location, String toolTip, ThumbnailTextAreaUsedControl controlTypeForButtonClick) {
-        if (parentPanel == null)
-            return null;
+    private JTextArea createThumbnailPanel(String note, int location, int width, int height, JPanel parentPanel) {
 
-        if (width < 0)
-            width = 100;
-        if (height < 0)
-            height = 100;
-        if (location == null)
-            location = new Point(parentPanel.getWidth() - 50, 0);
-
-        JTextArea nowypanel = nowyPanel("sssddd", 0, width, height, noteThumbnailJPanel);
-        nowypanel.setSize(width, height);
-        nowypanel.setLocation(location);
-        nowypanel.setRows(2);
-        parentPanel.add(nowypanel);
-        parentPanel.repaint();
-        parentPanel.revalidate();
-        parentPanel.validate();
-        return nowypanel;
+        JScrollPane jScrollPaneNoteArea = new JScrollPane(newThumbnailPanel(note, location, width, height, parentPanel));
+        jScrollPaneNoteArea.setSize(width, height);
+        jScrollPaneNoteArea.setLocation(0, location);
+        jScrollPaneNoteArea.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+        parentPanel.add(jScrollPaneNoteArea);
+        return newThumbnailPanel(note, location, width, height, parentPanel);
     }
 
 
-    //dodac opcje odpina notatke i odnzacza na zielona pinezke kobkretny dzien lub tytul notatki jedna metoda do 2 guzikow. / zrobic 2 metody i 2 osobne guziki ewentualnie jeden wyg;ad a potem robic na 2 i dodac foto i funckje
-//     private void addButtonToTheRightOfTheTitleAndDescription(String text, int width, int height, JPanel parentPanel, JTextArea textArea, Point location, String toolTip, ThumbnailTextAreaUsedControl controlTypeForButtonClick) {
+    private JTextArea addTitleInThumbnail(int width, int height, JPanel parentPanel) {
+        if (width < 0)
+            width = 100;
+        if (height < 0)
+            height = 40;
+
+        JTextArea titleArea = createThumbnailPanel("title", 0, width, height, parentPanel);
+        return titleArea;
+    }
+
+    private JTextArea addDescriptionInThumbnail(int width, int height, int titleHeight, JPanel parentPanel) throws SQLException {
+        if (width < 0)
+            width = 100;
+        if (titleHeight < 0)
+            titleHeight = 40;
+        if (height < 0)
+            height = 100;
+
+        String description = "description";
+        if (notesOperationsWithDatabase != null) {
+            NotepadItem ni = notesOperationsWithDatabase.getItem("pobieranie tutylu notatki");
+            if (ni != null)
+                description = ni.getText();
+        }
+
+        JTextArea noteTextArea = createThumbnailPanel(description, 40, width, height, parentPanel);
+        return noteTextArea;
+    }
+
+
+    private JTextArea informationPanel(String text, int width, int height, JPanel parentPanel) {
 //        if (parentPanel == null)
-//            return;
+//            return null;
 //
 //        if (width < 0)
-//            width = 10;
+//            width = 100;
 //        if (height < 0)
-//            height = 10;
+//            height = 100;
 //        if (location == null)
 //            location = new Point(parentPanel.getWidth() - 50, 0);
-//
-//        JButton btn = new JButton(text);
-//        btn.setSize(width, height);
-//        btn.setLocation(location);
-//        btn.addActionListener(new ActionListener() {
-//            @Override
-//            public void actionPerformed(ActionEvent e) {
-////                if (controlTypeForButtonClick == ThumbnailTextAreaUsedControl.TITLE && textArea != null && textArea.getName() == "title_textArea")
-////                    textArea.setText(null);
-////              else if (controlTypeForButtonClick == ThumbnailTextAreaUsedControl.DESCRIPTION && textArea.getName() == "description_textArea")
-////                    textArea.setText(null);
-//                if (noteThumbnailJPanel.isVisible() == true) {
-//                    dispose();
-//                    noteThumbnailJPanel.setVisible(false);
-//                }
-//
-//            }
-//        });
-//        btn.setToolTipText(toolTip);
-//        parentPanel.add(btn);
-//        parentPanel.repaint();
-//        parentPanel.revalidate();
-//        parentPanel.validate();
-//    }
 
-
-    public enum ThumbnailTextAreaUsedControl {
-        TITLE,
-        DESCRIPTION
+        JTextArea informationTextArea = newThumbnailPanel(text, 0, width, height, noteThumbnailJPanel);
+        informationTextArea.setSize(width, height);
+        //  informationTextArea.setLocation(location);
+        informationTextArea.setRows(2);
+        parentPanel.add(informationTextArea);
+        parentPanel.repaint();
+        parentPanel.revalidate();
+        parentPanel.validate();
+        return informationTextArea;
     }
 
 
     private int limitCreateThumbnailPanel() {
 
-      //  createThumbnailPanel();
+        // createThumbnailPanel();
         isNoteAdded = true;
 
         if (mainNotesJPanel != null && thumbnailCounter < 4)
